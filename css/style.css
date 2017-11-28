@@ -1,0 +1,26 @@
+.container {
+    width: 320px;
+    background: #eee;
+    padding: 12px;
+    border-radius: .3rem;
+}
+
+button {
+    width: 65px;
+    height: 65px;
+}
+
+.button-row {
+    margin-top: 12px;
+}
+
+form input:last-child {
+    margin-top: 12px
+}
+
+input {
+    border: 1px solid gainsboro;
+    width: 296px;
+    margin: 0 auto;
+    display: block;
+}
