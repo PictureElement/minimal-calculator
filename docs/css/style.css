@@ -1,0 +1,36 @@
+.container {
+    width: 320px;
+    background: #eee;
+    padding: 12px;
+    border-radius: .3rem;
+    border: 1px solid gainsboro;
+    box-shadow: 0 10px 6px -6px #777;
+}
+
+/* vertically center .container */
+body {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+button {
+    width: 65px;
+    height: 65px;
+}
+
+.button-row {
+    margin-top: 12px;
+}
+
+form input:last-child {
+    margin-top: 12px
+}
+
+input {
+    border: 1px solid gainsboro;
+    width: 296px;
+    margin: 0 auto;
+    display: block;
+}
