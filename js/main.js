@@ -211,8 +211,45 @@ subtract.on('click', function() {
 })
 
 multiply.on('click', function() {
+    
     var currentValue = display2.val();
-    display2.val(currentValue + ' \u00D7 ');
+    
+    // Example:
+    // currentValue = "2_x_3_-_4_+_"
+    // length = 12
+    // indexOfLastVissibleChar = length - 2 = 10
+    // lastVissibleChar = '+'
+    // str = "2_x_3_-_4"
+    // currentValue = "2_x_3_-_4_x_"
+    var indexOfLastVissibleChar = currentValue.length - 2;
+    var lastVissibleChar = currentValue.charAt(indexOfLastVissibleChar);
+    var str;
+    
+    switch (lastVissibleChar) {
+        // Last visible character is the subtraction sign
+        case "\u2212":
+            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
+            currentValue = str + ' \u00D7 ';
+            display2.val(currentValue);
+            break;
+        // Last vissible character is the multiplication sign
+        case "\u00D7":
+            break;
+        // Last vissible character is the division sign
+        case "\u00F7":
+            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
+            currentValue = str + ' \u00D7 ';
+            display2.val(currentValue);
+            break;
+        // Last vissible character is addition sign
+        case "\u002B":
+            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
+            currentValue = str + ' \u00D7 ';
+            display2.val(currentValue);
+            break;
+        default:
+            display2.val(currentValue + ' \u00D7 ');
+    }
 })
 
 divide.on('click', function() {
