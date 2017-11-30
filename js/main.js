@@ -26,270 +26,270 @@ display2.val('0');
 
 // numbers
 zero.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
         display2.val('0');
     }
     else {
-        display2.val(currentValue + '0');
+        display2.val(display2CurrentValue + '0');
     }
 })
 
 one.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('1');
     }
     else {
-        display2.val(currentValue + '1');
+        display2.val(display2CurrentValue + '1');
     }  
 })
 
 two.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('2');
     }
     else {
-        display2.val(currentValue + '2');
+        display2.val(display2CurrentValue + '2');
     }  
 })
 
 three.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('3');
     }
     else {
-        display2.val(currentValue + '3');
+        display2.val(display2CurrentValue + '3');
     }  
 })
 
 four.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('4');
     }
     else {
-        display2.val(currentValue + '4');
+        display2.val(display2CurrentValue + '4');
     }  
 })
 
 five.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('5');
     }
     else {
-        display2.val(currentValue + '5');
+        display2.val(display2CurrentValue + '5');
     }  
 })
 
 six.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('6');
     }
     else {
-        display2.val(currentValue + '6');
+        display2.val(display2CurrentValue + '6');
     }  
 })
 
 seven.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('7');
     }
     else {
-        display2.val(currentValue + '7');
+        display2.val(display2CurrentValue + '7');
     }  
 })
 
 eight.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('8');
     }
     else {
-        display2.val(currentValue + '8');
+        display2.val(display2CurrentValue + '8');
     }  
 })
 
 nine.on('click', function() {
-    var currentValue = display2.val();
-    if (currentValue === '0') {
+    var display2CurrentValue = display2.val();
+    if (display2CurrentValue === '0') {
          display2.val('9');
     }
     else {
-        display2.val(currentValue + '9');
+        display2.val(display2CurrentValue + '9');
     }  
 })
 
 // operators
 add.on('click', function() {
     
-    var currentValue = display2.val();
+    var display2CurrentValue = display2.val();
     
     // Example:
-    // currentValue = "2_×_3_-_4_-_"
+    // display2CurrentValue = "2_×_3_-_4_-_"
     // length = 12
     // indexOfLastVissibleChar = length - 2 = 10
     // lastVissibleChar = '-'
     // str = "2_×_3_-_4"
-    // currentValue = "2_×_3_-_4_+_"
-    var indexOfLastVissibleChar = currentValue.length - 2;
-    var lastVissibleChar = currentValue.charAt(indexOfLastVissibleChar);
+    // display2CurrentValue = "2_×_3_-_4_+_"
+    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
+    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
     var str;
     
     switch (lastVissibleChar) {
         // Last visible character is the subtraction sign
-        case "\u2212":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u002B ';
-            display2.val(currentValue);
+        case "-":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' + ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is the multiplication sign
-        case "\u00D7":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u002B ';
-            display2.val(currentValue);
+        case "*":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' + ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is the division sign
-        case "\u00F7":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u002B ';
-            display2.val(currentValue);
+        case "/":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' + ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is addition sign
-        case "\u002B":
+        case "+":
             break;
         default:
-            display2.val(currentValue + ' \u002B ');
+            display2.val(display2CurrentValue + ' + ');
     }
 })
 
 subtract.on('click', function() {
     
-    var currentValue = display2.val();
+    var display2CurrentValue = display2.val();
     
     // Example:
-    // currentValue = "2_×_3_-_4_+_"
+    // display2CurrentValue = "2_×_3_-_4_+_"
     // length = 12
     // indexOfLastVissibleChar = length - 2 = 10
     // lastVissibleChar = '+'
     // str = "2_×_3_-_4"
-    // currentValue = "2_×_3_-_4_-_"
-    var indexOfLastVissibleChar = currentValue.length - 2;
-    var lastVissibleChar = currentValue.charAt(indexOfLastVissibleChar);
+    // display2CurrentValue = "2_×_3_-_4_-_"
+    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
+    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
     var str;
     
     switch (lastVissibleChar) {
         // Last visible character is the subtraction sign
-        case "\u2212":
+        case "-":
             break;
         // Last vissible character is the multiplication sign
-        case "\u00D7":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u2212 ';
-            display2.val(currentValue);
+        case "*":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' - ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is the division sign
-        case "\u00F7":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u2212 ';
-            display2.val(currentValue);
+        case "/":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' - ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is addition sign
-        case "\u002B":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u2212 ';
-            display2.val(currentValue);
+        case "+":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' - ';
+            display2.val(display2CurrentValue);
             break;
         default:
-            display2.val(currentValue + ' \u2212 ');
+            display2.val(display2CurrentValue + ' - ');
     }
 })
 
 multiply.on('click', function() {
     
-    var currentValue = display2.val();
+    var display2CurrentValue = display2.val();
     
     // Example:
-    // currentValue = "2_×_3_-_4_+_"
+    // display2CurrentValue = "2_×_3_-_4_+_"
     // length = 12
     // indexOfLastVissibleChar = length - 2 = 10
     // lastVissibleChar = '+'
     // str = "2_×_3_-_4"
-    // currentValue = "2_×_3_-_4_×_"
-    var indexOfLastVissibleChar = currentValue.length - 2;
-    var lastVissibleChar = currentValue.charAt(indexOfLastVissibleChar);
+    // display2CurrentValue = "2_×_3_-_4_×_"
+    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
+    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
     var str;
     
     switch (lastVissibleChar) {
         // Last visible character is the subtraction sign
-        case "\u2212":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u00D7 ';
-            display2.val(currentValue);
+        case "-":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' * ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is the multiplication sign
-        case "\u00D7":
+        case "*":
             break;
         // Last vissible character is the division sign
-        case "\u00F7":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u00D7 ';
-            display2.val(currentValue);
+        case "/":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' * ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is addition sign
-        case "\u002B":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u00D7 ';
-            display2.val(currentValue);
+        case "+":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' * ';
+            display2.val(display2CurrentValue);
             break;
         default:
-            display2.val(currentValue + ' \u00D7 ');
+            display2.val(display2CurrentValue + ' * ');
     }
 })
 
 divide.on('click', function() {
     
-    var currentValue = display2.val();
+    var display2CurrentValue = display2.val();
     
     // Example:
-    // currentValue = "2_×_3_-_4_+_"
+    // display2CurrentValue = "2_×_3_-_4_+_"
     // length = 12
     // indexOfLastVissibleChar = length - 2 = 10
     // lastVissibleChar = '+'
     // str = "2_×_3_-_4"
-    // currentValue = "2_×_3_-_4_÷_"
-    var indexOfLastVissibleChar = currentValue.length - 2;
-    var lastVissibleChar = currentValue.charAt(indexOfLastVissibleChar);
+    // display2CurrentValue = "2_×_3_-_4_÷_"
+    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
+    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
     var str;
     
     switch (lastVissibleChar) {
         // Last visible character is the subtraction sign
-        case "\u2212":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u00F7 ';
-            display2.val(currentValue);
+        case "-":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' / ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is the multiplication sign
-        case "\u00D7":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u00F7 ';
-            display2.val(currentValue);
+        case "*":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' / ';
+            display2.val(display2CurrentValue);
             break;
         // Last vissible character is the division sign
-        case "\u00F7":
+        case "/":
             break;
         // Last vissible character is addition sign
-        case "\u002B":
-            str = currentValue.substr(0, indexOfLastVissibleChar - 1)
-            currentValue = str + ' \u00F7 ';
-            display2.val(currentValue);
+        case "+":
+            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
+            display2CurrentValue = str + ' / ';
+            display2.val(display2CurrentValue);
             break;
         default:
-            display2.val(currentValue + ' \u00F7 ');
+            display2.val(display2CurrentValue + ' / ');
     }
 })
