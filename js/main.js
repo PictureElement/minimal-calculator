@@ -21,8 +21,10 @@ var decimal = $('#decimal');
 var sign = $('#sign');
 var equal = $('#equal');
 
-// default display value 
-display2.val('0');
+// default display1 value
+display1.val("");
+// default display2 value 
+display2.val("0");
 
 // numbers
 zero.on('click', function() {
@@ -292,4 +294,10 @@ divide.on('click', function() {
         default:
             display2.val(display2CurrentValue + ' / ');
     }
+})
+
+// Clear button 
+clear.on('click', function() {
+    display1.val("");
+    display2.val("0");
 })
