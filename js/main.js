@@ -1,5 +1,6 @@
 var display1 = $('#display1');
 var display2 = $('#display2');
+var display1ValueHidden;
 var clear = $('#clear');
 var backspace = $('#backspace');
 var percentage = $('#percentage');
@@ -23,7 +24,9 @@ var equal = $('#equal');
 
 // default display values
 display1.val("");
+display1ValueHidden = "";
 display2.val("");
+
 
 // Flags
 var expectingNumber = 1;
@@ -159,7 +162,9 @@ add.on('click', function () {
         var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
         var str, operation, evaluation;
 
-        display1.val(display1Value + display2Value + " + ");
+        display1.val(display1Value + display2Value + " \u002B ");
+        display1ValueHidden = display1ValueHidden + display2Value + " + ";
+        
         // Expecting number input, not an operator
         expectingNumber = 1;
         // Overwrite display2 content
@@ -212,7 +217,9 @@ subtract.on('click', function () {
         var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
         var str, operation, evaluation;
 
-        display1.val(display1Value + display2Value + " - ");
+        display1.val(display1Value + display2Value + " \u2212 ");
+        display1ValueHidden = display1ValueHidden + display2Value + " - ";
+        
         expectingNumber = 1;
         overwriteDisplay2 = 1;
     }
@@ -228,7 +235,9 @@ multiply.on('click', function () {
         var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
         var str;
 
-        display1.val(display1Value + display2Value + " * ");
+        display1.val(display1Value + display2Value + " \u00D7 ");
+        display1ValueHidden = display1ValueHidden + display2Value + " * ";
+        
         expectingNumber = 1;
         overwriteDisplay2 = 1;
     }
@@ -244,7 +253,9 @@ divide.on('click', function () {
         var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
         var str;
 
-        display1.val(display1Value + display2Value + " / ");
+        display1.val(display1Value + display2Value + " \u00F7 ");
+        display1ValueHidden = display1ValueHidden + display2Value + " / ";
+        
         expectingNumber = 1;
         overwriteDisplay2 = 1;
     }
@@ -258,12 +269,21 @@ clear.on('click', function () {
 
 // Equal button
 equal.on('click', function () {
-    var operation = display1.val() + display2.val();
+    var operation = display1ValueHidden + display2.val();
+    // Clear display 1
     display1.val("");
+    display1ValueHidden = "";
     var evaluation = eval(operation);
-    if (evaluation === Infinity) {
-        evaluation = '\u221E'; 
+    
+    switch (evaluation) {
+        case Infinity:
+            evaluation = '\u221E';
+            break;
+        case -Infinity:
+            evaluation = '-\u221E';
+            break;
     }
+    
     display2.val(evaluation);
 })
 
