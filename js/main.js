@@ -255,3 +255,14 @@ clear.on('click', function () {
     display1.val("");
     display2.val("");
 })
+
+// Equal button
+equal.on('click', function () {
+    var operation = display1.val() + display2.val();
+    display1.val("");
+    var evaluation = eval(operation);
+    if (evaluation === Infinity) {
+        evaluation = '\u221E'; 
+    }
+    display2.val(evaluation);
+})
