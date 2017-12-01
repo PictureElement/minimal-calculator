@@ -266,3 +266,11 @@ equal.on('click', function () {
     }
     display2.val(evaluation);
 })
+
+// Backspace button
+backspace.on('click', function () {
+    var display2Value = display2.val();
+    var length = display2Value.length;
+    var str = display2Value.slice(0, length-1);
+    display2.val(str);
+})
