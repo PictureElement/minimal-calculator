@@ -21,283 +21,237 @@ var decimal = $('#decimal');
 var sign = $('#sign');
 var equal = $('#equal');
 
-// default display1 value
+// default display values
 display1.val("");
-// default display2 value 
-display2.val("0");
+display2.val("");
+
+// Flags
+var expectingNumber = 1;
+var overwriteDisplay2 = 1;
 
 // numbers
-zero.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
+zero.on('click', function () {
+    if (overwriteDisplay2 === 1) {
         display2.val('0');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '0');
+        display2.val(display2.val() + '0'); 
     }
+    expectingNumber = 0;
 })
 
-one.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('1');
+one.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('1');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '1');
-    }  
+        display2.val(display2.val() + '1'); 
+    }
+    expectingNumber = 0;
 })
 
-two.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('2');
+two.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('2');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '2');
-    }  
+        display2.val(display2.val() + '2'); 
+    }
+    expectingNumber = 0;
 })
 
-three.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('3');
+three.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('3');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '3');
-    }  
+        display2.val(display2.val() + '3'); 
+    }
+    expectingNumber = 0;
 })
 
-four.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('4');
+four.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('4');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '4');
-    }  
+        display2.val(display2.val() + '4'); 
+    }
+    expectingNumber = 0;
 })
 
-five.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('5');
+five.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('5');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '5');
-    }  
+        display2.val(display2.val() + '5'); 
+    }
+    expectingNumber = 0;
 })
 
-six.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('6');
+six.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('6');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '6');
-    }  
+        display2.val(display2.val() + '6'); 
+    }
+    expectingNumber = 0;
 })
 
-seven.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('7');
+seven.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('7');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '7');
-    }  
+        display2.val(display2.val() + '7'); 
+    }
+    expectingNumber = 0;
 })
 
-eight.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('8');
+eight.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('8');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '8');
-    }  
+        display2.val(display2.val() + '8'); 
+    }
+    expectingNumber = 0;
 })
 
-nine.on('click', function() {
-    var display2CurrentValue = display2.val();
-    if (display2CurrentValue === '0') {
-         display2.val('9');
+nine.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('9');
+        overwriteDisplay2 = 0;
     }
     else {
-        display2.val(display2CurrentValue + '9');
-    }  
+        display2.val(display2.val() + '9'); 
+    }
+    expectingNumber = 0;
 })
 
 // operators
-add.on('click', function() {
+add.on('click', function () {
     
-    var display2CurrentValue = display2.val();
-    
-    // Example:
-    // display2CurrentValue = "2_×_3_-_4_-_"
-    // length = 12
-    // indexOfLastVissibleChar = length - 2 = 10
-    // lastVissibleChar = '-'
-    // str = "2_×_3_-_4"
-    // display2CurrentValue = "2_×_3_-_4_+_"
-    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
-    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
-    var str;
-    
-    switch (lastVissibleChar) {
-        // Last visible character is the subtraction sign
-        case "-":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' + ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is the multiplication sign
-        case "*":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' + ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is the division sign
-        case "/":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' + ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is addition sign
-        case "+":
-            break;
-        default:
-            display2.val(display2CurrentValue + ' + ');
+    if (expectingNumber === 0) {
+        
+        var display1Value = display1.val();
+        var display2Value = display2.val();
+
+        // Example:
+        // display1CurrentValue = "2_×_3_-_4_-_"
+        // length = 12
+        // indexOfLastVissibleChar = length - 2 = 10
+        // lastVissibleChar = '-'
+        // str = "2_×_3_-_4"
+        // display1CurrentValue = "2_×_3_-_4_+_"
+        var indexOfLastVissibleChar = display1Value.length - 2;
+        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
+        var str, operation, evaluation;
+
+        display1.val(display1Value + display2Value + " + ");
+        // Expecting number input, not an operator
+        expectingNumber = 1;
+        // Overwrite display2 content
+        overwriteDisplay2 = 1;
+
+        /*
+        if (display1Value === "") {
+            display1.val(display2Value + " + ");
+        }
+        else {
+            switch (lastVissibleChar) {
+                // Last visible character is the subtraction sign
+                case "-":
+                    str = display1Value.substr(0, indexOfLastVissibleChar - 1)
+                    display1Value = str + ' + ';
+                    display1.val(display1Value + display2Value);
+                    break;
+                // Last vissible character is the multiplication sign
+                case "*":
+                    str = display1Value.substr(0, indexOfLastVissibleChar - 1)
+                    display1Value = str + ' + ';
+                    display1.val(display1Value);
+                    break;
+                // Last vissible character is the division sign
+                case "/":
+                    str = display1Value.substr(0, indexOfLastVissibleChar - 1)
+                    display1Value = str + ' + ';
+                    display1.val(display1Value);
+                    break;
+                // Last vissible character is addition sign
+                case "+":
+                    display1.val(display1Value + display2Value + " + ");
+                    operation = display1.val() + "0";
+                    evaluation = eval(operation);
+                    display2.val(evaluation);
+                    break;
+            }
+        }
+        */
     }
 })
 
-subtract.on('click', function() {
+subtract.on('click', function () {
     
-    var display2CurrentValue = display2.val();
-    
-    // Example:
-    // display2CurrentValue = "2_×_3_-_4_+_"
-    // length = 12
-    // indexOfLastVissibleChar = length - 2 = 10
-    // lastVissibleChar = '+'
-    // str = "2_×_3_-_4"
-    // display2CurrentValue = "2_×_3_-_4_-_"
-    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
-    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
-    var str;
-    
-    switch (lastVissibleChar) {
-        // Last visible character is the subtraction sign
-        case "-":
-            break;
-        // Last vissible character is the multiplication sign
-        case "*":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' - ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is the division sign
-        case "/":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' - ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is addition sign
-        case "+":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' - ';
-            display2.val(display2CurrentValue);
-            break;
-        default:
-            display2.val(display2CurrentValue + ' - ');
+    if (expectingNumber === 0) {
+        var display1Value = display1.val();
+        var display2Value = display2.val();
+
+        var indexOfLastVissibleChar = display1Value.length - 2;
+        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
+        var str, operation, evaluation;
+
+        display1.val(display1Value + display2Value + " - ");
+        expectingNumber = 1;
+        overwriteDisplay2 = 1;
     }
 })
 
-multiply.on('click', function() {
+multiply.on('click', function () {
     
-    var display2CurrentValue = display2.val();
-    
-    // Example:
-    // display2CurrentValue = "2_×_3_-_4_+_"
-    // length = 12
-    // indexOfLastVissibleChar = length - 2 = 10
-    // lastVissibleChar = '+'
-    // str = "2_×_3_-_4"
-    // display2CurrentValue = "2_×_3_-_4_×_"
-    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
-    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
-    var str;
-    
-    switch (lastVissibleChar) {
-        // Last visible character is the subtraction sign
-        case "-":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' * ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is the multiplication sign
-        case "*":
-            break;
-        // Last vissible character is the division sign
-        case "/":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' * ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is addition sign
-        case "+":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' * ';
-            display2.val(display2CurrentValue);
-            break;
-        default:
-            display2.val(display2CurrentValue + ' * ');
+    if (expectingNumber === 0) {
+        var display1Value = display1.val();
+        var display2Value = display2.val();
+
+        var indexOfLastVissibleChar = display1Value.length - 2;
+        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
+        var str;
+
+        display1.val(display1Value + display2Value + " * ");
+        expectingNumber = 1;
+        overwriteDisplay2 = 1;
     }
 })
 
-divide.on('click', function() {
+divide.on('click', function () {
     
-    var display2CurrentValue = display2.val();
-    
-    // Example:
-    // display2CurrentValue = "2_×_3_-_4_+_"
-    // length = 12
-    // indexOfLastVissibleChar = length - 2 = 10
-    // lastVissibleChar = '+'
-    // str = "2_×_3_-_4"
-    // display2CurrentValue = "2_×_3_-_4_÷_"
-    var indexOfLastVissibleChar = display2CurrentValue.length - 2;
-    var lastVissibleChar = display2CurrentValue.charAt(indexOfLastVissibleChar);
-    var str;
-    
-    switch (lastVissibleChar) {
-        // Last visible character is the subtraction sign
-        case "-":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' / ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is the multiplication sign
-        case "*":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' / ';
-            display2.val(display2CurrentValue);
-            break;
-        // Last vissible character is the division sign
-        case "/":
-            break;
-        // Last vissible character is addition sign
-        case "+":
-            str = display2CurrentValue.substr(0, indexOfLastVissibleChar - 1)
-            display2CurrentValue = str + ' / ';
-            display2.val(display2CurrentValue);
-            break;
-        default:
-            display2.val(display2CurrentValue + ' / ');
+    if (expectingNumber === 0) {
+        var display1Value = display1.val();
+        var display2Value = display2.val();
+
+        var indexOfLastVissibleChar = display1Value.length - 2;
+        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
+        var str;
+
+        display1.val(display1Value + display2Value + " / ");
+        expectingNumber = 1;
+        overwriteDisplay2 = 1;
     }
 })
 
 // Clear button 
-clear.on('click', function() {
+clear.on('click', function () {
     display1.val("");
-    display2.val("0");
+    display2.val("");
 })
