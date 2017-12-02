@@ -216,8 +216,15 @@ subtract.on('click', function () {
     
     if (expectingNumber === 0) {
         
-        display1Secondary.val(display1Secondary.val() +  display2Secondary.val() + " \u2212 ");
-        display1Primary = display1Primary + display2Secondary.val() + " - ";
+        if (lastOpIsPercentage === 0) {
+            display1Secondary.val(display1Secondary.val() +  display2Secondary.val() + " \u2212 ");
+            display1Primary = display1Primary + display2Secondary.val() + " - ";
+        }
+        else {
+            display1Secondary.val(display1Secondary.val() + " \u2212 ");
+            display1Primary = display1Primary + " - ";
+            lastOpIsPercentage = 0;
+        }
         
         expectingNumber = 1;
         overwritedisplay2Secondary = 1;
@@ -228,8 +235,15 @@ multiply.on('click', function () {
     
     if (expectingNumber === 0) {
         
-        display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00D7 ");
-        display1Primary = display1Primary + display2Secondary.val() + " * ";
+        if (lastOpIsPercentage === 0) {
+            display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00D7 ");
+            display1Primary = display1Primary + display2Secondary.val() + " * ";
+        }
+        else {
+            display1Secondary.val(display1Secondary.val() + " \u00D7 ");
+            display1Primary = display1Primary + " * ";
+            lastOpIsPercentage = 0;
+        }
         
         expectingNumber = 1;
         overwritedisplay2Secondary = 1;
@@ -240,8 +254,15 @@ divide.on('click', function () {
     
     if (expectingNumber === 0) {
         
-        display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00F7 ");
-        display1Primary = display1Primary + display2Secondary.val() + " / ";
+        if (lastOpIsPercentage === 0) {
+            display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00F7 ");
+            display1Primary = display1Primary + display2Secondary.val() + " / ";
+        }
+        else {
+            display1Secondary.val(display1Secondary.val() + " \u00F7 ");
+            display1Primary = display1Primary + " / ";
+            lastOpIsPercentage = 0;
+        }
         
         expectingNumber = 1;
         overwritedisplay2Secondary = 1;
