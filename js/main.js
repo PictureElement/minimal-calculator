@@ -174,41 +174,6 @@ add.on('click', function () {
         expectingNumber = 1;
         // Overwrite display2Secondary content
         overwritedisplay2Secondary = 1;
-
-        /*
-        if (display1SecondaryValue === "") {
-            display1Secondary.val(display2SecondaryValue + " + ");
-        }
-        else {
-            switch (lastVissibleChar) {
-                // Last visible character is the subtraction sign
-                case "-":
-                    str = display1SecondaryValue.substr(0, indexOfLastVissibleChar - 1)
-                    display1SecondaryValue = str + ' + ';
-                    display1Secondary.val(display1SecondaryValue + display2SecondaryValue);
-                    break;
-                // Last vissible character is the multiplication sign
-                case "*":
-                    str = display1SecondaryValue.substr(0, indexOfLastVissibleChar - 1)
-                    display1SecondaryValue = str + ' + ';
-                    display1Secondary.val(display1SecondaryValue);
-                    break;
-                // Last vissible character is the division sign
-                case "/":
-                    str = display1SecondaryValue.substr(0, indexOfLastVissibleChar - 1)
-                    display1SecondaryValue = str + ' + ';
-                    display1Secondary.val(display1SecondaryValue);
-                    break;
-                // Last vissible character is addition sign
-                case "+":
-                    display1Secondary.val(display1SecondaryValue + display2SecondaryValue + " + ");
-                    operation = display1Secondary.val() + "0";
-                    evaluation = eval(operation);
-                    display2Secondary.val(evaluation);
-                    break;
-            }
-        }
-        */
     }
 })
 
