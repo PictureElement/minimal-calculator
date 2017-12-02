@@ -1,6 +1,6 @@
-var display1 = $('#display1');
-var display2 = $('#display2');
-var display1ValueHidden;
+var display1Secondary = $('#display1');
+var display2Secondary = $('#display2');
+var display1Primary;
 var clear = $('#clear');
 var backspace = $('#backspace');
 var percentage = $('#percentage');
@@ -23,133 +23,134 @@ var sign = $('#sign');
 var equal = $('#equal');
 
 // default display values
-display1.val("");
-display1ValueHidden = "";
-display2.val("");
+display1Secondary.val("");
+display1Primary = "";
+display2Secondary.val("");
 
 
 // Flags
 var expectingNumber = 1;
-var overwriteDisplay2 = 1;
+var overwritedisplay2Secondary = 1;
+var lastOpIsPercentage = 0;
 
 // numbers
 zero.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('0');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('0');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '0'); 
+        display2Secondary.val(display2Secondary.val() + '0'); 
     }
     expectingNumber = 0;
 })
 
 one.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('1');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('1');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '1'); 
+        display2Secondary.val(display2Secondary.val() + '1'); 
     }
     expectingNumber = 0;
 })
 
 two.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('2');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('2');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '2'); 
+        display2Secondary.val(display2Secondary.val() + '2'); 
     }
     expectingNumber = 0;
 })
 
 three.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('3');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('3');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '3'); 
+        display2Secondary.val(display2Secondary.val() + '3'); 
     }
     expectingNumber = 0;
 })
 
 four.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('4');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('4');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '4'); 
+        display2Secondary.val(display2Secondary.val() + '4'); 
     }
     expectingNumber = 0;
 })
 
 five.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('5');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('5');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '5'); 
+        display2Secondary.val(display2Secondary.val() + '5'); 
     }
     expectingNumber = 0;
 })
 
 six.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('6');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('6');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '6'); 
+        display2Secondary.val(display2Secondary.val() + '6'); 
     }
     expectingNumber = 0;
 })
 
 seven.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('7');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('7');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '7'); 
+        display2Secondary.val(display2Secondary.val() + '7'); 
     }
     expectingNumber = 0;
 })
 
 eight.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('8');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('8');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '8'); 
+        display2Secondary.val(display2Secondary.val() + '8'); 
     }
     expectingNumber = 0;
 })
 
 nine.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('9');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('9');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '9'); 
+        display2Secondary.val(display2Secondary.val() + '9'); 
     }
     expectingNumber = 0;
 })
 
 decimal.on('click', function () {
-    if (overwriteDisplay2 === 1) {
-        display2.val('.');
-        overwriteDisplay2 = 0;
+    if (overwritedisplay2Secondary === 1) {
+        display2Secondary.val('.');
+        overwritedisplay2Secondary = 0;
     }
     else {
-        display2.val(display2.val() + '.'); 
+        display2Secondary.val(display2Secondary.val() + '.'); 
     }
     expectingNumber = 0;
 })
@@ -159,58 +160,51 @@ add.on('click', function () {
     
     if (expectingNumber === 0) {
         
-        var display1Value = display1.val();
-        var display2Value = display2.val();
-
-        // Example:
-        // display1CurrentValue = "2_×_3_-_4_-_"
-        // length = 12
-        // indexOfLastVissibleChar = length - 2 = 10
-        // lastVissibleChar = '-'
-        // str = "2_×_3_-_4"
-        // display1CurrentValue = "2_×_3_-_4_+_"
-        var indexOfLastVissibleChar = display1Value.length - 2;
-        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
-        var str, operation, evaluation;
-
-        display1.val(display1Value + display2Value + " \u002B ");
-        display1ValueHidden = display1ValueHidden + display2Value + " + ";
+        if (lastOpIsPercentage === 0) {
+            display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u002B ");
+            display1Primary = display1Primary + display2Secondary.val() + " + ";
+        }
+        else {
+            display1Secondary.val(display1Secondary.val() + " \u002B ");
+            display1Primary = display1Primary + " + ";
+            lastOpIsPercentage = 0;
+        }
         
         // Expecting number input, not an operator
         expectingNumber = 1;
-        // Overwrite display2 content
-        overwriteDisplay2 = 1;
+        // Overwrite display2Secondary content
+        overwritedisplay2Secondary = 1;
 
         /*
-        if (display1Value === "") {
-            display1.val(display2Value + " + ");
+        if (display1SecondaryValue === "") {
+            display1Secondary.val(display2SecondaryValue + " + ");
         }
         else {
             switch (lastVissibleChar) {
                 // Last visible character is the subtraction sign
                 case "-":
-                    str = display1Value.substr(0, indexOfLastVissibleChar - 1)
-                    display1Value = str + ' + ';
-                    display1.val(display1Value + display2Value);
+                    str = display1SecondaryValue.substr(0, indexOfLastVissibleChar - 1)
+                    display1SecondaryValue = str + ' + ';
+                    display1Secondary.val(display1SecondaryValue + display2SecondaryValue);
                     break;
                 // Last vissible character is the multiplication sign
                 case "*":
-                    str = display1Value.substr(0, indexOfLastVissibleChar - 1)
-                    display1Value = str + ' + ';
-                    display1.val(display1Value);
+                    str = display1SecondaryValue.substr(0, indexOfLastVissibleChar - 1)
+                    display1SecondaryValue = str + ' + ';
+                    display1Secondary.val(display1SecondaryValue);
                     break;
                 // Last vissible character is the division sign
                 case "/":
-                    str = display1Value.substr(0, indexOfLastVissibleChar - 1)
-                    display1Value = str + ' + ';
-                    display1.val(display1Value);
+                    str = display1SecondaryValue.substr(0, indexOfLastVissibleChar - 1)
+                    display1SecondaryValue = str + ' + ';
+                    display1Secondary.val(display1SecondaryValue);
                     break;
                 // Last vissible character is addition sign
                 case "+":
-                    display1.val(display1Value + display2Value + " + ");
-                    operation = display1.val() + "0";
+                    display1Secondary.val(display1SecondaryValue + display2SecondaryValue + " + ");
+                    operation = display1Secondary.val() + "0";
                     evaluation = eval(operation);
-                    display2.val(evaluation);
+                    display2Secondary.val(evaluation);
                     break;
             }
         }
@@ -221,69 +215,79 @@ add.on('click', function () {
 subtract.on('click', function () {
     
     if (expectingNumber === 0) {
-        var display1Value = display1.val();
-        var display2Value = display2.val();
-
-        var indexOfLastVissibleChar = display1Value.length - 2;
-        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
-        var str, operation, evaluation;
-
-        display1.val(display1Value + display2Value + " \u2212 ");
-        display1ValueHidden = display1ValueHidden + display2Value + " - ";
+        
+        display1Secondary.val(display1Secondary.val() +  display2Secondary.val() + " \u2212 ");
+        display1Primary = display1Primary + display2Secondary.val() + " - ";
         
         expectingNumber = 1;
-        overwriteDisplay2 = 1;
+        overwritedisplay2Secondary = 1;
     }
 })
 
 multiply.on('click', function () {
     
     if (expectingNumber === 0) {
-        var display1Value = display1.val();
-        var display2Value = display2.val();
-
-        var indexOfLastVissibleChar = display1Value.length - 2;
-        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
-        var str;
-
-        display1.val(display1Value + display2Value + " \u00D7 ");
-        display1ValueHidden = display1ValueHidden + display2Value + " * ";
+        
+        display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00D7 ");
+        display1Primary = display1Primary + display2Secondary.val() + " * ";
         
         expectingNumber = 1;
-        overwriteDisplay2 = 1;
+        overwritedisplay2Secondary = 1;
     }
 })
 
 divide.on('click', function () {
     
     if (expectingNumber === 0) {
-        var display1Value = display1.val();
-        var display2Value = display2.val();
-
-        var indexOfLastVissibleChar = display1Value.length - 2;
-        var lastVissibleChar = display1Value.charAt(indexOfLastVissibleChar);
-        var str;
-
-        display1.val(display1Value + display2Value + " \u00F7 ");
-        display1ValueHidden = display1ValueHidden + display2Value + " / ";
+        
+        display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00F7 ");
+        display1Primary = display1Primary + display2Secondary.val() + " / ";
         
         expectingNumber = 1;
-        overwriteDisplay2 = 1;
+        overwritedisplay2Secondary = 1;
+    }
+})
+
+percentage.on('click', function () {
+    
+    if (expectingNumber === 0) {
+        
+        // Strip the last operand from display1
+        // if display1Primary = "2_+_3_-_" then operand = "_-_" operation = "2_+_3"
+        var operand = display1Primary.substr(display1Primary.length - 3, 3);
+        //console.log(operand);
+        var operation = display1Primary.substr(0, display1Primary.length - 3);
+        //console.log(operation);
+        var evaluation = eval(operation);
+        //console.log(evaluation);
+        var result = evaluation * display2Secondary.val() / 100;
+        //console.log(result);
+
+        display1Secondary.val(display1Secondary.val() + result);
+        display1Primary = display1Primary + result;
+        
+        expectingNumber = 0;
+        overwritedisplay2Secondary = 1;
+        lastOpIsPercentage = 1;
     }
 })
 
 // Clear button 
 clear.on('click', function () {
-    display1.val("");
-    display2.val("");
+    display1Secondary.val("");
+    display2Secondary.val("");
+    display1Primary = "";
+    // Reset flags
+    expectingNumber = 1;
+    overwritedisplay2Secondary = 1;
 })
 
 // Equal button
 equal.on('click', function () {
-    var operation = display1ValueHidden + display2.val();
+    var operation = display1Primary + display2Secondary.val();
     // Clear display 1
-    display1.val("");
-    display1ValueHidden = "";
+    display1Secondary.val("");
+    display1Primary = "";
     var evaluation = eval(operation);
     
     switch (evaluation) {
@@ -294,14 +298,13 @@ equal.on('click', function () {
             evaluation = '-\u221E';
             break;
     }
-    
-    display2.val(evaluation);
+    display2Secondary.val(evaluation);
 })
 
 // Backspace button
 backspace.on('click', function () {
-    var display2Value = display2.val();
-    var length = display2Value.length;
-    var str = display2Value.slice(0, length-1);
-    display2.val(str);
+    var display2SecondaryValue = display2Secondary.val();
+    var length = display2SecondaryValue.length;
+    var str = display2SecondaryValue.slice(0, length-1);
+    display2Secondary.val(str);
 })
