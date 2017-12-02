@@ -143,6 +143,17 @@ nine.on('click', function () {
     expectingNumber = 0;
 })
 
+decimal.on('click', function () {
+    if (overwriteDisplay2 === 1) {
+        display2.val('.');
+        overwriteDisplay2 = 0;
+    }
+    else {
+        display2.val(display2.val() + '.'); 
+    }
+    expectingNumber = 0;
+})
+
 // operators
 add.on('click', function () {
     
