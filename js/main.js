@@ -1,6 +1,7 @@
 var display1Secondary = $('#display1');
 var display2Secondary = $('#display2');
 var display1Primary;
+var display2Primary;
 var clear = $('#clear');
 var backspace = $('#backspace');
 var percentage = $('#percentage');
@@ -26,7 +27,7 @@ var equal = $('#equal');
 display1Secondary.val("");
 display1Primary = "";
 display2Secondary.val("");
-
+display2Primary = "";
 
 // Flags
 var expectingNumber = 1;
@@ -37,10 +38,12 @@ var lastOpIsPercentage = 0;
 zero.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('0');
+        display2Primary = "0";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '0'); 
+        display2Primary = display2Primary + "0";
     }
     expectingNumber = 0;
 })
@@ -48,10 +51,12 @@ zero.on('click', function () {
 one.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('1');
+        display2Primary = "1";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '1'); 
+        display2Primary = display2Primary + "1";
     }
     expectingNumber = 0;
 })
@@ -59,10 +64,12 @@ one.on('click', function () {
 two.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('2');
+        display2Primary = "2";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '2'); 
+        display2Primary = display2Primary + "2";
     }
     expectingNumber = 0;
 })
@@ -70,10 +77,12 @@ two.on('click', function () {
 three.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('3');
+        display2Primary = "3";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '3'); 
+        display2Primary = display2Primary + "3";
     }
     expectingNumber = 0;
 })
@@ -81,10 +90,12 @@ three.on('click', function () {
 four.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('4');
+        display2Primary = "4";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '4'); 
+        display2Primary = display2Primary + "4";
     }
     expectingNumber = 0;
 })
@@ -92,10 +103,12 @@ four.on('click', function () {
 five.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('5');
+        display2Primary = "5";
         overwriteDisplay2Secondary = 0;
     }
     else {
-        display2Secondary.val(display2Secondary.val() + '5'); 
+        display2Secondary.val(display2Secondary.val() + '5');
+        display2Primary = display2Primary + "5";
     }
     expectingNumber = 0;
 })
@@ -103,10 +116,12 @@ five.on('click', function () {
 six.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('6');
+        display2Primary = "6";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '6'); 
+        display2Primary = display2Primary + "6";
     }
     expectingNumber = 0;
 })
@@ -114,10 +129,12 @@ six.on('click', function () {
 seven.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('7');
+        display2Primary = "7";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '7'); 
+        display2Primary = display2Primary + "7";
     }
     expectingNumber = 0;
 })
@@ -125,10 +142,12 @@ seven.on('click', function () {
 eight.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('8');
+        display2Primary = "8";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '8'); 
+        display2Primary = display2Primary + "8";
     }
     expectingNumber = 0;
 })
@@ -136,10 +155,12 @@ eight.on('click', function () {
 nine.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('9');
+        display2Primary = "9";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '9'); 
+        display2Primary = display2Primary + "9";
     }
     expectingNumber = 0;
 })
@@ -147,10 +168,12 @@ nine.on('click', function () {
 decimal.on('click', function () {
     if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('.');
+        display2Primary = ".";
         overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '.'); 
+        display2Primary = display2Primary + ".";
     }
     expectingNumber = 0;
 })
@@ -162,7 +185,7 @@ add.on('click', function () {
         
         if (lastOpIsPercentage === 0) {
             display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u002B ");
-            display1Primary = display1Primary + display2Secondary.val() + " + ";
+            display1Primary = display1Primary + display2Primary + " + ";
         }
         else {
             display1Secondary.val(display1Secondary.val() + " \u002B ");
@@ -183,7 +206,7 @@ subtract.on('click', function () {
         
         if (lastOpIsPercentage === 0) {
             display1Secondary.val(display1Secondary.val() +  display2Secondary.val() + " \u2212 ");
-            display1Primary = display1Primary + display2Secondary.val() + " - ";
+            display1Primary = display1Primary + display2Primary + " - ";
         }
         else {
             display1Secondary.val(display1Secondary.val() + " \u2212 ");
@@ -202,7 +225,7 @@ multiply.on('click', function () {
         
         if (lastOpIsPercentage === 0) {
             display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00D7 ");
-            display1Primary = display1Primary + display2Secondary.val() + " * ";
+            display1Primary = display1Primary + display2Primary + " * ";
         }
         else {
             display1Secondary.val(display1Secondary.val() + " \u00D7 ");
@@ -221,7 +244,7 @@ divide.on('click', function () {
         
         if (lastOpIsPercentage === 0) {
             display1Secondary.val(display1Secondary.val() + display2Secondary.val() + " \u00F7 ");
-            display1Primary = display1Primary + display2Secondary.val() + " / ";
+            display1Primary = display1Primary + display2Primary + " / ";
         }
         else {
             display1Secondary.val(display1Secondary.val() + " \u00F7 ");
@@ -241,25 +264,26 @@ percentage.on('click', function () {
         var operator, operation, evaluation, result;
         
         // if display1Primary = "" then result = display2/100
-        alert(display1Primary.length);
         if (display1Primary.length === 0) {
-            result = display2Secondary.val() / 100;
+            // typeof(result) = number
+            result = Number(display2Primary) / 100;
         }
         else {
             // Strip the last operator from display1
             // if display1Primary = "2_+_3_-_" then operator = "_-_" operation = "2_+_3"
             operator = display1Primary.substr(display1Primary.length - 3, 3);
             operation = display1Primary.substr(0, display1Primary.length - 3);
+            // typeof(evaluation) = number
             evaluation = eval(operation);
-            result = evaluation * display2Secondary.val() / 100;
+            // typeof(result) = number
+            result = evaluation * Number(display2Primary) / 100;
         }
         
-        display1Secondary.val(display1Secondary.val() + result);
-        display1Primary = display1Primary + result;
+        // Update display1 value
+        display1Secondary.val(display1Secondary.val() + result.toString());
+        display1Primary = display1Primary + result.toString();
         
-        console.log("display1Secondary = " + display1Secondary.val());
-        console.log("display1Primary = " + display1Primary);
-        
+        // Update flags
         expectingNumber = 0;
         overwriteDisplay2Secondary = 1;
         lastOpIsPercentage = 1;
@@ -273,15 +297,20 @@ sign.on('click', function() {
         
         // If the number being displayed on display2 is negative, remove the (-) sign.
         // ex. "-234" becomes "234"
-        if (display2Secondary.val().charAt(0) === "-") {
-            // str = "234"
-            var str = display2Secondary.val().slice(1);
-            display2Secondary.val(str);
+        if (display2Primary.charAt(0) === "-") {
+            // str1 = "234"
+            var str1 = display2Secondary.val().slice(1);
+            display2Secondary.val(str1);
+            
+            // str2 = "234" 
+            var str2 = display1Primary.slice(1);
+            display2Primary = str2;
         }
         // Else add the (-) sign.
         // ex. "234" becomes "-234"
         else {
-            display2Secondary.val("-" + display2Secondary.val());
+            display2Secondary.val("\u2212" + display2Secondary.val());
+            display2Primary = "-" + display2Primary;
         }
     }
 })
@@ -291,6 +320,7 @@ clear.on('click', function () {
     display1Secondary.val("");
     display2Secondary.val("");
     display1Primary = "";
+    display2Primary = "";
     // Reset flags
     expectingNumber = 1;
     overwriteDisplay2Secondary = 1;
@@ -304,33 +334,44 @@ equal.on('click', function () {
         var operation = display1Primary;
     }
     else {
-        var operation = display1Primary + display2Secondary.val();
+        var operation = display1Primary + display2Primary;
     }
     
     // Clear display 1
     display1Secondary.val("");
     display1Primary = "";
     
+    // typeof(evaluation) = number
     var evaluation = eval(operation);
     
+    // Display result
     switch (evaluation) {
+        // typeof(Infinity) = number
         case Infinity:
-            evaluation = '\u221E';
+            display2Secondary.val('\u221E');
+            display2Primary = "Infinity";
             break;
+        // typeof(-Infinity) = number
         case -Infinity:
-            evaluation = '-\u221E';
+            display2Secondary.val('\u2212\u221E');
+            display2Primary = "-Infinity";
             break;
+        default:
+            display2Secondary.val(evaluation.toString());
+            display2Primary = evaluation.toString();
     }
     
-    display2Secondary.val(evaluation);
-    
+    // Update flag
     lastOpIsPercentage = 0;
 })
 
 // Backspace button
 backspace.on('click', function () {
-    var display2SecondaryValue = display2Secondary.val();
-    var length = display2SecondaryValue.length;
-    var str = display2SecondaryValue.slice(0, length-1);
-    display2Secondary.val(str);
+    var length1 = display2Secondary.val().length;
+    var str1 = display2Secondary.val().slice(0, length1-1);
+    display2Secondary.val(str1);
+    
+    var length2 = display2Primary.length;
+    var str2 = display2Primary.slice(0, length2-1);
+    display2Primary = str2;
 })
