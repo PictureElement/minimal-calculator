@@ -238,7 +238,7 @@ percentage.on('click', function () {
     
     if (expectingNumber === 0) {
         
-        var operand, operation, evaluation, result;
+        var operator, operation, evaluation, result;
         
         // if display1Primary = "" then result = display2/100
         alert(display1Primary.length);
@@ -246,9 +246,9 @@ percentage.on('click', function () {
             result = display2Secondary.val() / 100;
         }
         else {
-            // Strip the last operand from display1
-            // if display1Primary = "2_+_3_-_" then operand = "_-_" operation = "2_+_3"
-            operand = display1Primary.substr(display1Primary.length - 3, 3);
+            // Strip the last operator from display1
+            // if display1Primary = "2_+_3_-_" then operator = "_-_" operation = "2_+_3"
+            operator = display1Primary.substr(display1Primary.length - 3, 3);
             operation = display1Primary.substr(0, display1Primary.length - 3);
             evaluation = eval(operation);
             result = evaluation * display2Secondary.val() / 100;
