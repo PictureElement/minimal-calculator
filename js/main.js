@@ -238,12 +238,21 @@ percentage.on('click', function () {
     
     if (expectingNumber === 0) {
         
-        // Strip the last operand from display1
-        // if display1Primary = "2_+_3_-_" then operand = "_-_" operation = "2_+_3"
-        var operand = display1Primary.substr(display1Primary.length - 3, 3);
-        var operation = display1Primary.substr(0, display1Primary.length - 3);
-        var evaluation = eval(operation);
-        var result = evaluation * display2Secondary.val() / 100;
+        var operand, operation, evaluation, result;
+        
+        // if display1Primary = "" then result = display2/100
+        alert(display1Primary.length);
+        if (display1Primary.length === 0) {
+            result = display2Secondary.val() / 100;
+        }
+        else {
+            // Strip the last operand from display1
+            // if display1Primary = "2_+_3_-_" then operand = "_-_" operation = "2_+_3"
+            operand = display1Primary.substr(display1Primary.length - 3, 3);
+            operation = display1Primary.substr(0, display1Primary.length - 3);
+            evaluation = eval(operation);
+            result = evaluation * display2Secondary.val() / 100;
+        }
         
         display1Secondary.val(display1Secondary.val() + result);
         display1Primary = display1Primary + result;
