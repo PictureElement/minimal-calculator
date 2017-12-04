@@ -266,6 +266,26 @@ percentage.on('click', function () {
     }
 })
 
+// Sign button
+sign.on('click', function() {
+
+    if (expectingNumber === 0) {
+        
+        // If the number being displayed on display2 is negative, remove the (-) sign.
+        // ex. "-234" becomes "234"
+        if (display2Secondary.val().charAt(0) === "-") {
+            // str = "234"
+            var str = display2Secondary.val().slice(1);
+            display2Secondary.val(str);
+        }
+        // Else add the (-) sign.
+        // ex. "234" becomes "-234"
+        else {
+            display2Secondary.val("-" + display2Secondary.val());
+        }
+    }
+})
+
 // Clear button 
 clear.on('click', function () {
     display1Secondary.val("");
