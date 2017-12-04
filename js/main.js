@@ -30,14 +30,14 @@ display2Secondary.val("");
 
 // Flags
 var expectingNumber = 1;
-var overwritedisplay2Secondary = 1;
+var overwriteDisplay2Secondary = 1;
 var lastOpIsPercentage = 0;
 
 // numbers
 zero.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('0');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '0'); 
@@ -46,9 +46,9 @@ zero.on('click', function () {
 })
 
 one.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('1');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '1'); 
@@ -57,9 +57,9 @@ one.on('click', function () {
 })
 
 two.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('2');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '2'); 
@@ -68,9 +68,9 @@ two.on('click', function () {
 })
 
 three.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('3');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '3'); 
@@ -79,9 +79,9 @@ three.on('click', function () {
 })
 
 four.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('4');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '4'); 
@@ -90,9 +90,9 @@ four.on('click', function () {
 })
 
 five.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('5');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '5'); 
@@ -101,9 +101,9 @@ five.on('click', function () {
 })
 
 six.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('6');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '6'); 
@@ -112,9 +112,9 @@ six.on('click', function () {
 })
 
 seven.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('7');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '7'); 
@@ -123,9 +123,9 @@ seven.on('click', function () {
 })
 
 eight.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('8');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '8'); 
@@ -134,9 +134,9 @@ eight.on('click', function () {
 })
 
 nine.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('9');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '9'); 
@@ -145,9 +145,9 @@ nine.on('click', function () {
 })
 
 decimal.on('click', function () {
-    if (overwritedisplay2Secondary === 1) {
+    if (overwriteDisplay2Secondary === 1) {
         display2Secondary.val('.');
-        overwritedisplay2Secondary = 0;
+        overwriteDisplay2Secondary = 0;
     }
     else {
         display2Secondary.val(display2Secondary.val() + '.'); 
@@ -173,7 +173,7 @@ add.on('click', function () {
         // Expecting number input, not an operator
         expectingNumber = 1;
         // Overwrite display2Secondary content
-        overwritedisplay2Secondary = 1;
+        overwriteDisplay2Secondary = 1;
     }
 })
 
@@ -192,7 +192,7 @@ subtract.on('click', function () {
         }
         
         expectingNumber = 1;
-        overwritedisplay2Secondary = 1;
+        overwriteDisplay2Secondary = 1;
     }
 })
 
@@ -211,7 +211,7 @@ multiply.on('click', function () {
         }
         
         expectingNumber = 1;
-        overwritedisplay2Secondary = 1;
+        overwriteDisplay2Secondary = 1;
     }
 })
 
@@ -230,7 +230,7 @@ divide.on('click', function () {
         }
         
         expectingNumber = 1;
-        overwritedisplay2Secondary = 1;
+        overwriteDisplay2Secondary = 1;
     }
 })
 
@@ -241,19 +241,18 @@ percentage.on('click', function () {
         // Strip the last operand from display1
         // if display1Primary = "2_+_3_-_" then operand = "_-_" operation = "2_+_3"
         var operand = display1Primary.substr(display1Primary.length - 3, 3);
-        //console.log(operand);
         var operation = display1Primary.substr(0, display1Primary.length - 3);
-        //console.log(operation);
         var evaluation = eval(operation);
-        //console.log(evaluation);
         var result = evaluation * display2Secondary.val() / 100;
-        //console.log(result);
-
+        
         display1Secondary.val(display1Secondary.val() + result);
         display1Primary = display1Primary + result;
         
+        console.log("display1Secondary = " + display1Secondary.val());
+        console.log("display1Primary = " + display1Primary);
+        
         expectingNumber = 0;
-        overwritedisplay2Secondary = 1;
+        overwriteDisplay2Secondary = 1;
         lastOpIsPercentage = 1;
     }
 })
@@ -265,16 +264,24 @@ clear.on('click', function () {
     display1Primary = "";
     // Reset flags
     expectingNumber = 1;
-    overwritedisplay2Secondary = 1;
+    overwriteDisplay2Secondary = 1;
     lastOpIsPercentage = 0;
 })
 
 // Equal button
 equal.on('click', function () {
-    var operation = display1Primary + display2Secondary.val();
+    
+    if (lastOpIsPercentage === 1) {
+        var operation = display1Primary;
+    }
+    else {
+        var operation = display1Primary + display2Secondary.val();
+    }
+    
     // Clear display 1
     display1Secondary.val("");
     display1Primary = "";
+    
     var evaluation = eval(operation);
     
     switch (evaluation) {
@@ -285,7 +292,10 @@ equal.on('click', function () {
             evaluation = '-\u221E';
             break;
     }
+    
     display2Secondary.val(evaluation);
+    
+    lastOpIsPercentage = 0;
 })
 
 // Backspace button
