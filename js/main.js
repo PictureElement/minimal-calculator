@@ -33,6 +33,7 @@ display2Primary = "";
 var expectingNumber = 1;
 var overwriteDisplay2Secondary = 1;
 var lastOpIsPercentage = 0;
+var decimalPointAllowed = 1;
 
 // numbers
 zero.on('click', function () {
@@ -166,16 +167,20 @@ nine.on('click', function () {
 })
 
 decimal.on('click', function () {
-    if (overwriteDisplay2Secondary === 1) {
-        display2Secondary.val('.');
-        display2Primary = ".";
-        overwriteDisplay2Secondary = 0;
+    if (decimalPointAllowed) {
+        if (overwriteDisplay2Secondary === 1) {
+            display2Secondary.val('.');
+            display2Primary = ".";
+            overwriteDisplay2Secondary = 0;
+        }
+        else {
+            display2Secondary.val(display2Secondary.val() + '.'); 
+            display2Primary = display2Primary + ".";
+        }
+        expectingNumber = 0;
+        // Decimal point is allowed
+        decimalPointAllowed = 0;
     }
-    else {
-        display2Secondary.val(display2Secondary.val() + '.'); 
-        display2Primary = display2Primary + ".";
-    }
-    expectingNumber = 0;
 })
 
 // operators
@@ -196,7 +201,9 @@ add.on('click', function () {
         // Expecting number input, not an operator
         expectingNumber = 1;
         // Overwrite display2Secondary content
-        overwriteDisplay2Secondary = 1;
+        overwriteDisplay2Secondary = 1; 
+        // Decimal point is allowed
+        decimalPointAllowed = 1;
     }
 })
 
@@ -216,6 +223,8 @@ subtract.on('click', function () {
         
         expectingNumber = 1;
         overwriteDisplay2Secondary = 1;
+        // Decimal point is allowed
+        decimalPointAllowed = 1;
     }
 })
 
@@ -235,6 +244,8 @@ multiply.on('click', function () {
         
         expectingNumber = 1;
         overwriteDisplay2Secondary = 1;
+        // Decimal point is allowed
+        decimalPointAllowed = 1;
     }
 })
 
@@ -254,6 +265,8 @@ divide.on('click', function () {
         
         expectingNumber = 1;
         overwriteDisplay2Secondary = 1;
+        // Decimal point is allowed
+        decimalPointAllowed = 1;
     }
 })
 
@@ -367,11 +380,19 @@ equal.on('click', function () {
 
 // Backspace button
 backspace.on('click', function () {
-    var length1 = display2Secondary.val().length;
-    var str1 = display2Secondary.val().slice(0, length1-1);
+    
+    var len = display2Secondary.val().length;
+    var lastChar = display2Secondary.val().charAt(len-1);
+    
+    // Update flag
+    if (lastChar === ".") {
+        decimalPointAllowed = 1;
+    }
+    
+    // Update display2
+    var str1 = display2Secondary.val().slice(0, len-1);
     display2Secondary.val(str1);
     
-    var length2 = display2Primary.length;
-    var str2 = display2Primary.slice(0, length2-1);
+    var str2 = display2Primary.slice(0, len-1);
     display2Primary = str2;
 })
