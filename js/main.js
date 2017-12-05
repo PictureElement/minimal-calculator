@@ -374,8 +374,15 @@ equal.on('click', function () {
             display2Primary = evaluation.toString();
     }
     
-    // Update flag
+    // Update flags
     lastOpIsPercentage = 0;
+    // Need to check if the result is decimal
+    if (evaluation % 1 === 0) {
+        decimalPointAllowed = 1;
+    }
+    else {
+        decimalPointAllowed= 0;
+    }
 })
 
 // Backspace button
