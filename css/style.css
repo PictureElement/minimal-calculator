@@ -18,6 +18,21 @@ body {
 button {
     width: 65px;
     height: 65px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700 !important;
+    font-size: 22px !important;
+}
+
+#display1 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300 !important;
+    font-size: 14px !important;
+}
+
+#display2 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700 !important;
+    font-size: 28px !important;
 }
 
 .button-row {
