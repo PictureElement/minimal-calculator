@@ -337,7 +337,8 @@ clear.on('click', function () {
     // Reset flags
     expectingNumber = 1;
     overwriteDisplay2Secondary = 1;
-    lastOpIsPercentage = 0;
+    lastOpIsPercentage = 0; 
+    decimalPointAllowed = 1;
 })
 
 // Equal button
