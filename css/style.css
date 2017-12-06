@@ -1,6 +1,5 @@
 .container {
     width: 320px;
-    background: #eee;
     padding: 12px;
     /*border-radius: .3rem;*/
     border: 1px solid gainsboro;
@@ -41,13 +40,19 @@ button {
     margin-top: 12px;
 }
 
+form {
+    width: 294px;
+    border-radius: .25rem;
+}
+
 form input:last-child {
     margin-top: 12px
 }
 
-input {
-    border: 1px solid gainsboro;
-    width: 296px;
+form input {
+    background-color: inherit;
+    border: none;
+    width: 294px;
     margin: 0 auto;
     display: block;
 }
@@ -73,9 +78,9 @@ input {
     right: 0;
     bottom: 0;
     cursor: pointer;
-    background-color: #ccc;
     transition: .4s;
     border-radius: 50px;
+    background-color: white;
 }
 
 .slider:before {
@@ -85,17 +90,17 @@ input {
     width: 13px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: black;
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: black;
+  background-color: white;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px black;
+  box-shadow: 0 0 1px white;
 }
 
 input:checked + .slider:before {
