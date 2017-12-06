@@ -27,12 +27,14 @@ button {
     font-family: 'Roboto Mono', monospace;
     font-weight: 300 !important;
     font-size: 14px !important;
+    height: 50px;
 }
 
 #display2 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 700 !important;
     font-size: 28px !important;
+    height: 50px;
 }
 
 .button-row {
@@ -48,4 +50,54 @@ input {
     width: 296px;
     margin: 0 auto;
     display: block;
+}
+
+/*----------------------------- Rounded switch -----------------------------*/
+
+.switch input {
+    display: none;
+}
+
+.switch {
+    position: relative;
+    width: 30px;
+    height: 17px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  transform: translateX(13px);
 }
