@@ -23,6 +23,15 @@ var decimal = $('#decimal');
 var sign = $('#sign');
 var equal = $('#equal');
 
+// default theme (light)
+$(".container").css("background-color", "#d2d9df");
+$("form").css("background-color", "#ffffff");
+$("form input").css("color", "black");
+$(".operand-group").css({"background-color":"#a5b3c0", "color":"black"});
+$(".operator-group").css({"background-color":"#798ca0", "color":"black"});
+$(".clearing-group").css("color", "black");
+$("#equal").css("color", "black");
+
 // default display values
 display1Secondary.val("");
 display1Primary = "";
@@ -403,4 +412,30 @@ backspace.on('click', function () {
     
     var str2 = display2Primary.slice(0, len-1);
     display2Primary = str2;
+})
+
+// The change event is sent to an element when its value changes
+$("input[type='checkbox']").change(function () {
+    // dark theme
+    if (this.checked) {
+        //alert("dark");
+        $(".container").css("background-color", "#4a5968");
+        $("form").css("background-color", "#6a8095");
+        $("form input").css("color", "white");
+        $(".operand-group").css({"background-color":"#2a333c", "color":"white"});
+        $(".operator-group").css({"background-color":"#0b0d0f", "color":"white"});
+        $(".clearing-group").css("color", "white");
+        $("#equal").css("color", "white");
+    }
+    // light theme (default)
+    else {
+        //alert("light");
+        $(".container").css("background-color", "#d2d9df");
+        $("form").css("background-color", "#ffffff");
+        $("form input").css("color", "black");
+        $(".operand-group").css({"background-color":"#a5b3c0", "color":"black"});
+        $(".operator-group").css({"background-color":"#798ca0", "color":"black"});
+        $(".clearing-group").css("color", "black");
+        $("#equal").css("color", "black");
+    }
 })
