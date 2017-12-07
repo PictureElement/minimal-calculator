@@ -1,9 +1,6 @@
 .container {
     width: 320px;
     padding: 12px;
-    /*border-radius: .3rem;*/
-    border: none;
-    /*box-shadow: 0 10px 6px -6px #777;*/
 }
 
 /* vertically center .container */
@@ -45,16 +42,164 @@ form {
     border-radius: .25rem;
 }
 
-form input:last-child {
-    margin-top: 12px
-}
-
 form input {
     background-color: inherit;
     border: none;
     width: 294px;
     margin: 0 auto;
     display: block;
+}
+
+/*--------------------------------- Colors ---------------------------------*/
+
+.container-light {
+    background-color: #cfd8dc;
+    border: 1px solid #cfd8dc;
+}
+
+/*----------------------------*/
+
+.form-light {
+    background-color: #eceff1;
+    box-shadow: 0 0 0 0.1rem rgba(176, 190, 197, .5);
+}
+
+.form-input-light {
+    color: #263238;
+}
+
+/*----------------------------*/
+
+.operand-group-light {
+    background-color: #90a4ae;
+    border-color: #90a4ae;
+    color: #263238;
+}
+
+.operand-group-light:hover {
+    background-color: #78909c;
+    border-color: #607d8b;
+}
+
+.operand-group-light:active {
+    background-color: #607d8b;
+    border-color: #607d8b;
+    box-shadow: 0 0 0 0.2rem rgba(144, 164, 174, .5);
+}
+
+.operand-group-light:focus {
+    box-shadow: 0 0 0 0.2rem rgba(144, 164, 174, .5);
+}
+
+/*----------------------------*/
+
+.operator-group-light {
+    background-color: #546e7a;
+    border-color: #546e7a;
+    color: #263238;
+}
+
+.operator-group-light:hover {
+    background-color: #455a64;
+    border-color: #37474f;
+}
+
+.operator-group-light:active {
+    background-color: #37474f;
+    border-color: #37474f;
+    box-shadow: 0 0 0 0.2rem rgba(84, 110, 122, .5);
+}
+
+.operator-group-light:focus {
+    box-shadow: 0 0 0 0.2rem rgba(84, 110, 122, .5);
+}
+
+/*----------------------------*/
+
+.clearing-group-light {
+    color: #263238 !important;
+}
+
+/*----------------------------*/
+
+.equal-light {
+    color: #263238 !important;
+}
+
+/*==================================================================================*/
+
+.container-dark {
+    background-color: #37474f;
+    border: 1px solid #37474f;
+}
+
+/*----------------------------*/
+
+.form-dark {
+    background-color: #263238;
+    box-shadow: 0 0 0 0.1rem rgba(69, 90, 100, .5);
+}
+
+.form-input-dark {
+    color: #eceff1;
+}
+
+/*----------------------------*/
+
+.operand-group-dark {
+    background-color: #546E7a;
+    border-color: #546E7a;
+    color: #eceff1;
+}
+
+.operand-group-dark:hover {
+    background-color: #607d8b;
+    border-color: #78909c;
+}
+
+.operand-group-dark:active {
+    background-color: ##78909c;
+    border-color: ##78909c;
+    box-shadow: 0 0 0 0.2rem rgba(84, 110, 122, .5);
+}
+
+.operand-group-dark:focus {
+    box-shadow: 0 0 0 0.2rem rgba(84, 110, 122, .5);
+}
+
+/*----------------------------*/
+
+.operator-group-dark {
+    background-color: #90a4ae;
+    border-color: #90a4ae;
+    color: #eceff1;
+}
+
+.operator-group-dark:hover {
+    background-color: #b0bec5;
+    border-color: #cfd8dc;
+}
+
+.operator-group-dark:active {
+    background-color: #cfd8dc;
+    border-color: #cfd8dc;
+    box-shadow: 0 0 0 0.2rem rgba(144, 164, 174, .5);
+}
+
+.operator-group-dark:focus {
+    box-shadow: 0 0 0 0.2rem rgba(144, 164, 174, .5);
+}
+
+/*----------------------------*/
+
+.clearing-group-dark {
+    color: #eceff1 !important;
+}
+
+/*----------------------------*/
+
+.equal-dark {
+    color: #eceff1 !important;
 }
 
 /*----------------------------- Rounded switch -----------------------------*/
@@ -80,7 +225,6 @@ form input {
     cursor: pointer;
     transition: .4s;
     border-radius: 50px;
-    background-color: #6a8095;
 }
 
 .slider:before {
@@ -90,17 +234,17 @@ form input {
     width: 13px;
     left: 2px;
     bottom: 2px;
-    background-color: #b4bfca;
+    background-color: #78909C;
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: white;
+  background-color: #eceff1;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px white;
+  box-shadow: 0 0 1px #eceff1;
 }
 
 input:checked + .slider:before {
