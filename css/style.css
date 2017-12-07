@@ -19,20 +19,20 @@ button {
     height: 65px;
     font-family: 'Roboto Mono', monospace;
     font-weight: 700 !important;
-    font-size: 22px !important;
+    font-size: 30px !important;
 }
 
 #display1 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 300 !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
     height: 50px;
 }
 
 #display2 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 700 !important;
-    font-size: 28px !important;
+    font-size: 35px !important;
     height: 50px;
 }
 
@@ -80,7 +80,7 @@ form input {
     cursor: pointer;
     transition: .4s;
     border-radius: 50px;
-    background-color: white;
+    background-color: #6a8095;
 }
 
 .slider:before {
@@ -90,7 +90,7 @@ form input {
     width: 13px;
     left: 2px;
     bottom: 2px;
-    background-color: black;
+    background-color: #b4bfca;
     transition: .4s;
     border-radius: 50%;
 }
