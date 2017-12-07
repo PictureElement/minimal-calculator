@@ -225,6 +225,7 @@ form input {
     cursor: pointer;
     transition: .4s;
     border-radius: 50px;
+    background-color: #263238;
 }
 
 .slider:before {
@@ -234,9 +235,16 @@ form input {
     width: 13px;
     left: 2px;
     bottom: 2px;
-    background-color: #78909C;
     transition: .4s;
     border-radius: 50%;
+}
+
+input:checked + .slider:before {
+    background-color: #263238;
+}
+
+input:not(:checked) + .slider:before {
+    background-color: #eceff1;
 }
 
 input:checked + .slider {
