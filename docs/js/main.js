@@ -24,13 +24,13 @@ var sign = $('#sign');
 var equal = $('#equal');
 
 // default theme (light)
-$(".container").css("background-color", "#d2d9df");
-$("form").css("background-color", "#ffffff");
-$("form input").css("color", "black");
-$(".operand-group").css({"background-color":"#a5b3c0", "color":"black"});
-$(".operator-group").css({"background-color":"#798ca0", "color":"black"});
-$(".clearing-group").css("color", "black");
-$("#equal").css("color", "black");
+$(".container").addClass("container-light");
+$("form").addClass("form-light");
+$("form input").addClass("form-input-light");
+$(".operand-group").addClass("operand-group-light");
+$(".operator-group").addClass("operator-group-light");
+$(".clearing-group").addClass("clearing-group-light");
+$("#equal").addClass("equal-light");
 
 // default display values
 display1Secondary.val("");
@@ -419,23 +419,37 @@ $("input[type='checkbox']").change(function () {
     // dark theme
     if (this.checked) {
         //alert("dark");
-        $(".container").css("background-color", "#4a5968");
-        $("form").css("background-color", "#6a8095");
-        $("form input").css("color", "white");
-        $(".operand-group").css({"background-color":"#2a333c", "color":"white"});
-        $(".operator-group").css({"background-color":"#0b0d0f", "color":"white"});
-        $(".clearing-group").css("color", "white");
-        $("#equal").css("color", "white");
+        $(".container").removeClass("container-light");
+        $(".container").addClass("container-dark");
+        $("form").removeClass("form-light");
+        $("form").addClass("form-dark");
+        $("form input").removeClass("form-input-light");
+        $("form input").addClass("form-input-dark");
+        $(".operand-group").removeClass("operand-group-light");
+        $(".operand-group").addClass("operand-group-dark");
+        $(".operator-group").removeClass("operator-group-light");
+        $(".operator-group").addClass("operator-group-dark");
+        $(".clearing-group").removeClass("clearing-group-light");
+        $(".clearing-group").addClass("clearing-group-dark");
+        $("#equal").removeClass("equal-light");
+        $("#equal").addClass("equal-dark");
     }
     // light theme (default)
     else {
         //alert("light");
-        $(".container").css("background-color", "#d2d9df");
-        $("form").css("background-color", "#ffffff");
-        $("form input").css("color", "black");
-        $(".operand-group").css({"background-color":"#a5b3c0", "color":"black"});
-        $(".operator-group").css({"background-color":"#798ca0", "color":"black"});
-        $(".clearing-group").css("color", "black");
-        $("#equal").css("color", "black");
+        $(".container").removeClass("container-dark");
+        $(".container").addClass("container-light");
+        $("form").removeClass("form-dark");
+        $("form").addClass("form-light");
+        $("form input").removeClass("form-input-dark");
+        $("form input").addClass("form-input-light");
+        $(".operand-group").removeClass("operand-group-dark");
+        $(".operand-group").addClass("operand-group-light");
+        $(".operator-group").removeClass("operator-group-dark");
+        $(".operator-group").addClass("operator-group-light");
+        $(".clearing-group").removeClass("clearing-group-dark");
+        $(".clearing-group").addClass("clearing-group-light");
+        $("#equal").removeClass("equal-dark");
+        $("#equal").addClass("equal-light");
     }
 })
