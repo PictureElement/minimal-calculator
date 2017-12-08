@@ -1,3 +1,12 @@
+var display1 = {
+    secondary: "",
+    primary: ""
+};
+var display2 = {
+    secondary: "",
+    primary: ""
+}
+
 var display1Secondary = $('#display1');
 var display2Secondary = $('#display2');
 var display1Primary;
