@@ -299,31 +299,6 @@ $('#percentage').on('click', function () {
     }
 })
 
-// Sign button
-$('#sign').on('click', function() {
-
-    if (flag.numberAllowed === false) {
-        
-        // If the number being displayed on display2 is negative, remove the (-) sign.
-        // ex. "-234" becomes "234"
-        if (display2.op.charAt(0) === "-") {
-            // str1 = "234"
-            var str1 = $('#display2').val().slice(1);
-            $('#display2').val(str1);
-            
-            // str2 = "234" 
-            var str2 = display1.op.slice(1);
-            display2.op = str2;
-        }
-        // Else add the (-) sign.
-        // ex. "234" becomes "-234"
-        else {
-            $('#display2').val("\u2212" + $('#display2').val());
-            display2.op = "-" + display2.op;
-        }
-    }
-})
-
 // Clear button 
 $('#clear').on('click', function () {
     $('#display1').val("");
