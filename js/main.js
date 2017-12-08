@@ -39,7 +39,7 @@ $('#zero').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '0');
+        $('#display2').val($('#display2').val() + '0');
         display2.op = display2.op + "0";
     }
     flag.numberAllowed = false;
@@ -52,7 +52,7 @@ $('#one').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '1');
+        $('#display2').val($('#display2').val() + '1');
         display2.op = display2.op + "1";
     }
     flag.numberAllowed = false;
@@ -65,7 +65,7 @@ $('#two').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '2');
+        $('#display2').val($('#display2').val() + '2');
         display2.op = display2.op + "2";
     }
     flag.numberAllowed = false;
@@ -78,7 +78,7 @@ $('#three').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '3');
+        $('#display2').val($('#display2').val() + '3');
         display2.op = display2.op + "3";
     }
     flag.numberAllowed = false;
@@ -91,7 +91,7 @@ $('#four').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '4');
+        $('#display2').val($('#display2').val() + '4');
         display2.op = display2.op + "4";
     }
     flag.numberAllowed = false;
@@ -104,7 +104,7 @@ $('#five').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '5');
+        $('#display2').val($('#display2').val() + '5');
         display2.op = display2.op + "5";
     }
     flag.numberAllowed = false;
@@ -117,7 +117,7 @@ $('#six').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '6');
+        $('#display2').val($('#display2').val() + '6');
         display2.op = display2.op + "6";
     }
     flag.numberAllowed = false;
@@ -130,7 +130,7 @@ $('#seven').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '7');
+        $('#display2').val($('#display2').val() + '7');
         display2.op = display2.op + "7";
     }
     flag.numberAllowed = false;
@@ -143,7 +143,7 @@ $('#eight').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '8');
+        $('#display2').val($('#display2').val() + '8');
         display2.op = display2.op + "8";
     }
     flag.numberAllowed = false;
@@ -156,21 +156,21 @@ $('#nine').on('click', function () {
         flag.display2Overwrite = false;
     }
     else {
-        $('#display2').val($('#display2').val + '9');
+        $('#display2').val($('#display2').val() + '9');
         display2.op = display2.op + "9";
     }
     flag.numberAllowed = false;
 })
 
 $('#decimal').on('click', function () {
-    if (flag.decimalPointAllowed) {
+    if (flag.decimalPointAllowed === true) {
         if (flag.display2Overwrite === true) {
             $('#display2').val('.');
             display2.op = ".";
             flag.display2Overwrite = false;
         }
         else {
-            $('#display2').val($('#display2').val + '.');
+            $('#display2').val($('#display2').val() + '.');
             display2.op = display2.op + ".";
         }
         flag.numberAllowed = false;
