@@ -28,8 +28,10 @@ $("form").addClass("form-light");
 $("form input").addClass("form-input-light");
 $(".operand-group").addClass("operand-group-light");
 $(".operator-group").addClass("operator-group-light");
-$(".clearing-group").addClass("clearing-group-light");
 $("#equal").addClass("equal-light");
+$("#clear").addClass("clear-light");
+$("#clear-entry").addClass("clear-entry-light");
+$("#backspace").addClass("backspace-light");
 
 // numbers
 $('#zero').on('click', function () {
@@ -391,10 +393,14 @@ $("input[type='checkbox']").change(function () {
         $(".operand-group").addClass("operand-group-dark");
         $(".operator-group").removeClass("operator-group-light");
         $(".operator-group").addClass("operator-group-dark");
-        $(".clearing-group").removeClass("clearing-group-light");
-        $(".clearing-group").addClass("clearing-group-dark");
         $("#equal").removeClass("equal-light");
         $("#equal").addClass("equal-dark");
+        $("#clear").removeClass("clear-light");
+        $("#clear").addClass("clear-dark");
+        $("#clear-entry").removeClass("clear-entry-light");
+        $("#clear-entry").addClass("clear-entry-dark");
+        $("#backspace").removeClass("backspace-light");
+        $("#backspace").addClass("backspace-dark");
     }
     // light theme (default)
     else {
@@ -409,9 +415,13 @@ $("input[type='checkbox']").change(function () {
         $(".operand-group").addClass("operand-group-light");
         $(".operator-group").removeClass("operator-group-dark");
         $(".operator-group").addClass("operator-group-light");
-        $(".clearing-group").removeClass("clearing-group-dark");
-        $(".clearing-group").addClass("clearing-group-light");
         $("#equal").removeClass("equal-dark");
         $("#equal").addClass("equal-light");
+        $("#clear").removeClass("clear-dark");
+        $("#clear").addClass("clear-light");
+        $("#clear-entry").removeClass("clear-entry-dark");
+        $("#clear-entry").addClass("clear-entry-light");
+        $("#backspace").removeClass("backspace-dark");
+        $("#backspace").addClass("backspace-light");
     }
 })
