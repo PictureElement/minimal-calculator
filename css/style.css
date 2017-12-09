@@ -15,9 +15,11 @@ body {
 
 button {
     width: 65px;
-    height: 65px;
+    height: 45px;
     font-family: 'Inconsolata', monospace;
     font-size: 30px !important;
+    border: none;
+    border-radius: 10px;
 }
 
 /* -----------------------------------------------------------------*/
