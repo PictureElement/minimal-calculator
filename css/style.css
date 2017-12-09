@@ -11,24 +11,27 @@ body {
   align-items: center;
 }
 
+/* -------------------- Button styling ---------------------------*/
+
 button {
     width: 65px;
     height: 65px;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 700 !important;
+    font-family: 'Inconsolata', monospace;
     font-size: 30px !important;
 }
 
+/* -----------------------------------------------------------------*/
+
 #display1 {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Inconsolata', monospace;
     font-weight: 300 !important;
-    font-size: 16px !important;
+    font-size: 20px !important;
     height: 50px;
 }
 
 #display2 {
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 700 !important;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 500 !important;
     font-size: 35px !important;
     height: 50px;
 }
