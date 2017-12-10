@@ -16,8 +16,7 @@ body {
 button {
     width: 65px;
     height: 45px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 30px !important;
+    font-family: 'Roboto', sans-serif;
     border: none;
     border-radius: 5px;
     outline: none !important;
@@ -25,17 +24,18 @@ button {
     transition: all 0.1s;
 }
 
-#display1 {
-    font-family: 'Inconsolata', monospace;
-    font-weight: 300 !important;
-    font-size: 20px !important;
-    height: 50px;
+button.operator-group, button#equal {
+    font-size: 30px !important;
 }
 
-#display2 {
-    font-family: 'Inconsolata', monospace;
-    font-weight: 500 !important;
-    font-size: 35px !important;
+button.operand-group, button#clear, button#clear-entry {
+    font-size: 20px !important;
+}
+
+#display1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400 !important;
+    font-size: 20px !important;
     height: 50px;
 }
 

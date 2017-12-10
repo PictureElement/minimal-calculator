@@ -1,26 +1,20 @@
 var display1 = {
     // default display1 values
     op: "",
-    eval: ""
-};
-
-var display2 = {
-    // default display2 values
-    op: "",
-    eval: ""
+    eval: "",
+    lastOp: "",
+    lastOpIndex: -1
 };
 
 // default flag values
 var flag = {
-    numberAllowed: true,
-    display2Overwrite: true,
+    operatorAllowed: false,
     lastOpIsPct: false,
     decimalPointAllowed: true
 }
 
 // default display values
 $('#display1').val("");
-$('#display2').val("");
 
 // default theme (light)
 $(".container").addClass("container-light");
@@ -35,241 +29,126 @@ $("#backspace").addClass("backspace-light");
 
 // numbers
 $('#zero').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('0');
-        display2.op = "0";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '0');
-        display2.op = display2.op + "0";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0030');
+    display1.op = display1.op + "0";
 })
 
 $('#one').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('1');
-        display2.op = "1";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '1');
-        display2.op = display2.op + "1";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0031');
+    display1.op = display1.op + "1";
 })
 
 $('#two').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('2');
-        display2.op = "2";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '2');
-        display2.op = display2.op + "2";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0032');
+    display1.op = display1.op + "2";
 })
 
 $('#three').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('3');
-        display2.op = "3";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '3');
-        display2.op = display2.op + "3";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0033');
+    display1.op = display1.op + "3";
 })
 
 $('#four').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('4');
-        display2.op = "4";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '4');
-        display2.op = display2.op + "4";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0034');
+    display1.op = display1.op + "4";
 })
 
 $('#five').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('5');
-        display2.op = "5";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '5');
-        display2.op = display2.op + "5";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0035');
+    display1.op = display1.op + "5";
 })
 
 $('#six').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('6');
-        display2.op = "6";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '6');
-        display2.op = display2.op + "6";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0036');
+    display1.op = display1.op + "6";
 })
 
 $('#seven').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('7');
-        display2.op = "7";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '7');
-        display2.op = display2.op + "7";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0037');
+    display1.op = display1.op + "7";
 })
 
 $('#eight').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('8');
-        display2.op = "8";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '8');
-        display2.op = display2.op + "8";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0038');
+    display1.op = display1.op + "8";
 })
 
 $('#nine').on('click', function () {
-    if (flag.display2Overwrite === true) {
-        $('#display2').val('9');
-        display2.op = "9";
-        flag.display2Overwrite = false;
-    }
-    else {
-        $('#display2').val($('#display2').val() + '9');
-        display2.op = display2.op + "9";
-    }
-    flag.numberAllowed = false;
+    $('#display1').val($('#display1').val() + '\u0039');
+    display1.op = display1.op + "9";
 })
-
+              
 $('#decimal').on('click', function () {
-    if (flag.decimalPointAllowed === true) {
-        if (flag.display2Overwrite === true) {
-            $('#display2').val('.');
-            display2.op = ".";
-            flag.display2Overwrite = false;
-        }
-        else {
-            $('#display2').val($('#display2').val() + '.');
-            display2.op = display2.op + ".";
-        }
-        flag.numberAllowed = false;
-        // Decimal point is allowed
+    if (flag.decimalPointAllowed) {
+        $('#display1').val($('#display1').val() + '\u002e');
+        display1.op = display1.op + "."; 
         flag.decimalPointAllowed = false;
     }
 })
 
 // operators
 $('#add').on('click', function () {
-    
-    if (flag.numberAllowed === false) {
-        
-        if (flag.lastOpIsPct === false) {
-            $('#display1').val($('#display1').val() + $('#display2').val() + " \u002B ");
-            display1.op = display1.op + display2.op + " + ";
-        }
-        else {
-            $('#display1').val($('#display1').val() + " \u002B ");
-            display1.op = display1.op + " + ";
-            flag.lastOpIsPct = false;
-        }
-        
-        // Expecting number input, not an operator
-        flag.numberAllowed = true;
-        // Overwrite $('#display2') content
-        flag.display2Overwrite = true; 
-        // Decimal point is allowed
-        flag.decimalPointAllowed = true;
+    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
+        // replace last character with +
+        $('#display1').val($('#display1').val().replace(/.$/,"\u002b"));
+        display1.op = display1.op.replace(/.$/,"+"); 
     }
+    else {
+        $('#display1').val($('#display1').val() + "\u002b");
+        display1.op = display1.op + "+";
+    }
+    display1.lastOp = "+";
+    display1.lastOpIndex = display1.op.length - 1;
+    flag.decimalPointAllowed = true;
 })
 
 $('#subtract').on('click', function () {
-    
-    if (flag.numberAllowed === false) {
-        
-        if (flag.lastOpIsPct === false) {
-            $('#display1').val($('#display1').val() +  $('#display2').val() + " \u2212 ");
-            display1.op = display1.op + display2.op + " - ";
-        }
-        else {
-            $('#display1').val($('#display1').val() + " \u2212 ");
-            display1.op = display1.op + " - ";
-            flag.lastOpIsPct = false;
-        }
-        
-        flag.numberAllowed = true;
-        flag.display2Overwrite = true;
-        // Decimal point is allowed
-        flag.decimalPointAllowed = true;
+    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
+        // replace last character with -
+        $('#display1').val($('#display1').val().replace(/.$/,"\u2212"));
+        display1.op = display1.op.replace(/.$/,"-"); 
     }
+    else {
+        $('#display1').val($('#display1').val() + "\u2212");
+        display1.op = display1.op + "-";
+    }
+    display1.lastOp = "-";
+    display1.lastOpIndex = display1.op.length - 1;
+    flag.decimalPointAllowed = true;
 })
 
 $('#multiply').on('click', function () {
-    
-    if (flag.numberAllowed === false) {
-        
-        if (flag.lastOpIsPct === false) {
-            $('#display1').val($('#display1').val() + $('#display2').val() + " \u00D7 ");
-            display1.op = display1.op + display2.op + " * ";
-        }
-        else {
-            $('#display1').val($('#display1').val() + " \u00D7 ");
-            display1.op = display1.op + " * ";
-            flag.lastOpIsPct = false;
-        }
-        
-        flag.numberAllowed = true;
-        flag.display2Overwrite = true;
-        // Decimal point is allowed
-        flag.decimalPointAllowed = true;
+    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
+        // replace last character with *
+        $('#display1').val($('#display1').val().replace(/.$/,"\u00d7"));
+        display1.op = display1.op.replace(/.$/,"*"); 
     }
+    else {
+        $('#display1').val($('#display1').val() + "\u00d7");
+        display1.op = display1.op + "*";
+    }
+    display1.lastOp = "*";
+    display1.lastOpIndex = display1.op.length - 1;
+    flag.decimalPointAllowed = true;
 })
 
 $('#divide').on('click', function () {
-    
-    if (flag.numberAllowed === false) {
-        
-        if (flag.lastOpIsPct === false) {
-            $('#display1').val($('#display1').val() + $('#display2').val() + " \u00F7 ");
-            display1.op = display1.op + display2.op + " / ";
-        }
-        else {
-            $('#display1').val($('#display1').val() + " \u00F7 ");
-            display1.op = display1.op + " / ";
-            flag.lastOpIsPct = false;
-        }
-        
-        flag.numberAllowed = true;
-        flag.display2Overwrite = true;
-        // Decimal point is allowed
-        flag.decimalPointAllowed = true;
+    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
+        // replace last character with /
+        $('#display1').val($('#display1').val().replace(/.$/,"\u00f7"));
+        display1.op = display1.op.replace(/.$/,"/"); 
     }
+    else {
+        $('#display1').val($('#display1').val() + "\u00f7");
+        display1.op = display1.op + "/";
+    }
+    display1.lastOp = "/";
+    display1.lastOpIndex = display1.op.length - 1;
+    flag.decimalPointAllowed = true;
 })
 
 $('#percentage').on('click', function () {
-    
+    /*
     if (flag.numberAllowed === false) {
         
         var operator, operation, evaluation, result;
@@ -299,83 +178,42 @@ $('#percentage').on('click', function () {
         flag.display2Overwrite = true;
         flag.lastOpIsPct = true;
     }
+    */
+    
+    // display1.op = 2 + 4 - 50
+    display1.op = "(" + display1.op + ")" + "*" + "";
+    $('#display1').val($('#display1').val() + '\u0025');
+    display1.op = display1.op + "%";
 })
 
 // Clear button 
 $('#clear').on('click', function () {
     $('#display1').val("");
-    $('#display2').val("");
     display1.op = "";
-    display2.op = "";
-    // Reset flags
-    flag.numberAllowed = true;
-    flag.display2Overwrite = true;
-    flag.lastOpIsPct = false; 
-    flag.decimalPointAllowed = true;
+    display1.eval = "";
+    display1.lastOp = "";
+    display1.lastOpIndex = -1;
 })
 
 // Equal button
 $('#equal').on('click', function () {
-    
-    if (flag.lastOpIsPct === true) {
-        var operation = display1.op;
-    }
-    else {
-        var operation = display1.op + display2.op;
-    }
-    
-    // Clear display 1
-    $('#display1').val("");
-    display1.op = "";
-    
-    // typeof(evaluation) = number
-    var evaluation = eval(operation);
-    
-    // Display result
-    switch (evaluation) {
-        // typeof(Infinity) = number
-        case Infinity:
-            $('#display2').val('\u221E');
-            display2.op = "Infinity";
-            break;
-        // typeof(-Infinity) = number
-        case -Infinity:
-            $('#display2').val('\u2212\u221E');
-            display2.op = "-Infinity";
-            break;
-        default:
-            $('#display2').val(evaluation.toString());
-            display2.op = evaluation.toString();
-    }
-    
-    // Update flags
-    flag.lastOpIsPct = false;
-    // Need to check if the result is decimal
-    if (evaluation % 1 === 0) {
-        flag.decimalPointAllowed = true;
-    }
-    else {
-        flag.decimalPointAllowed = false;
-    }
+    display1.eval = eval(display1.op).toString();
+    display1.op = display1.eval;
+    $('#display1').val(display1.eval);
 })
 
 // Backspace button
 $('#backspace').on('click', function () {
     
-    var len = $('#display2').val().length;
-    var lastChar = $('#display2').val().charAt(len-1);
+    var len = $('#display1').val().length;
+    var lastChar = $('#display1').val().charAt(len-1);
     
-    // Update flag
-    if (lastChar === ".") {
-        flag.decimalPointAllowed = true;
-    }
+    // Update display1
+    var str1 = $('#display1').val().slice(0, len-1);
+    $('#display1').val(str1);
     
-    // Update display2
-    var str1 = $('#display2').val().slice(0, len-1);
-    $('#display2').val(str1);
-    
-    var str2 = display2.op.slice(0, len-1);
-    display2.op = str2;
+    var str2 = display1.op.slice(0, len-1);
+    display1.op = str2;
 })
 
 // The change event is sent to an element when its value changes
