@@ -1,20 +1,23 @@
 var display1 = {
     // default display1 values
-    op: "",
-    eval: "",
-    lastOp: "",
-    lastOpIndex: -1
+    operation: "",
+    evaluation: "",
+    numOfOperands: 0,
+    operator: "",
+    operand: "",
+    previousOperand: "",
+    numOfPct: 0
 };
 
 // default flag values
 var flag = {
-    operatorAllowed: false,
-    lastOpIsPct: false,
-    decimalPointAllowed: true
-}
+    decimalPointAllowed: true,
+    pctAllowed: false,
+};
 
 // default display values
 $('#display1').val("");
+$('#display2').val("");
 
 // default theme (light)
 $(".container").addClass("container-light");
@@ -24,196 +27,286 @@ $(".operand-group").addClass("operand-group-light");
 $(".operator-group").addClass("operator-group-light");
 $("#equal").addClass("equal-light");
 $("#clear").addClass("clear-light");
-$("#clear-entry").addClass("clear-entry-light");
+$("#ans").addClass("ans-light");
 $("#backspace").addClass("backspace-light");
 
 // numbers
 $('#zero').on('click', function () {
+    display1.operand = display1.operand + "0";
     $('#display1').val($('#display1').val() + '\u0030');
-    display1.op = display1.op + "0";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#one').on('click', function () {
+    display1.operand = display1.operand + "1";
     $('#display1').val($('#display1').val() + '\u0031');
-    display1.op = display1.op + "1";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#two').on('click', function () {
+    display1.operand = display1.operand + "2";
     $('#display1').val($('#display1').val() + '\u0032');
-    display1.op = display1.op + "2";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#three').on('click', function () {
+    display1.operand = display1.operand + "3";
     $('#display1').val($('#display1').val() + '\u0033');
-    display1.op = display1.op + "3";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#four').on('click', function () {
+    display1.operand = display1.operand + "4";
     $('#display1').val($('#display1').val() + '\u0034');
-    display1.op = display1.op + "4";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#five').on('click', function () {
+    display1.operand = display1.operand + "5";
     $('#display1').val($('#display1').val() + '\u0035');
-    display1.op = display1.op + "5";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#six').on('click', function () {
+    display1.operand = display1.operand + "6";
     $('#display1').val($('#display1').val() + '\u0036');
-    display1.op = display1.op + "6";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#seven').on('click', function () {
+    display1.operand = display1.operand + "7";
     $('#display1').val($('#display1').val() + '\u0037');
-    display1.op = display1.op + "7";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#eight').on('click', function () {
+    display1.operand = display1.operand + "8";
     $('#display1').val($('#display1').val() + '\u0038');
-    display1.op = display1.op + "8";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
 
 $('#nine').on('click', function () {
+    display1.operand = display1.operand + "9";
     $('#display1').val($('#display1').val() + '\u0039');
-    display1.op = display1.op + "9";
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    flag.pctAllowed = true;
 })
               
 $('#decimal').on('click', function () {
     if (flag.decimalPointAllowed) {
+        display1.operand = display1.operand + ".";
         $('#display1').val($('#display1').val() + '\u002e');
-        display1.op = display1.op + "."; 
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
         flag.decimalPointAllowed = false;
     }
 })
 
+$('#left-parenthesis').on('click', function () {
+    display1.operand = display1.operand + "(";
+    $('#display1').val($('#display1').val() + '\u0028');
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+})
+
+$('#right-parenthesis').on('click', function () {
+    display1.operand = display1.operand + ")";
+    $('#display1').val($('#display1').val() + '\u0029');
+    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+})
+
+$('#square-root').on('click', function () {
+})
+
 // operators
 $('#add').on('click', function () {
-    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
+    if($('#display1').val().endsWith("\u002b") || $('#display1').val().endsWith("\u2212") || $('#display1').val().endsWith("\u00d7") || $('#display1').val().endsWith("\u00f7")) {
         // replace last character with +
         $('#display1').val($('#display1').val().replace(/.$/,"\u002b"));
-        display1.op = display1.op.replace(/.$/,"+"); 
     }
+    /*
+    // Handle %
+    else if ($('#display1').val().endsWith("\u0025")) {
+        
+    }
+    */
     else {
+        display1.operation = display1.operation + display1.operator + display1.operand;
+        display1.evaluation = eval(display1.operation).toString();
         $('#display1').val($('#display1').val() + "\u002b");
-        display1.op = display1.op + "+";
+        display1.numOfOperands ++;
     }
-    display1.lastOp = "+";
-    display1.lastOpIndex = display1.op.length - 1;
+    display1.previousOperand = display1.operand;
+    display1.operand = "";
+    display1.operator = "+";
     flag.decimalPointAllowed = true;
 })
 
 $('#subtract').on('click', function () {
-    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
+    if ($('#display1').val().endsWith("\u002b") || $('#display1').val().endsWith("\u2212") || $('#display1').val().endsWith("\u00d7") || $('#display1').val().endsWith("\u00f7")) {
         // replace last character with -
         $('#display1').val($('#display1').val().replace(/.$/,"\u2212"));
-        display1.op = display1.op.replace(/.$/,"-"); 
     }
     else {
+        display1.operation = display1.operation + display1.operator + display1.operand;
+        display1.evaluation = eval(display1.operation).toString();
         $('#display1').val($('#display1').val() + "\u2212");
-        display1.op = display1.op + "-";
+        display1.numOfOperands ++;
     }
-    display1.lastOp = "-";
-    display1.lastOpIndex = display1.op.length - 1;
+    display1.previousOperand = display1.operand;
+    display1.operand = "";
+    display1.operator = "-";
     flag.decimalPointAllowed = true;
 })
 
 $('#multiply').on('click', function () {
-    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
-        // replace last character with *
-        $('#display1').val($('#display1').val().replace(/.$/,"\u00d7"));
-        display1.op = display1.op.replace(/.$/,"*"); 
+    if ($('#display1').val().length !== 0) {
+        if($('#display1').val().endsWith("\u002b") || $('#display1').val().endsWith("\u2212") || $('#display1').val().endsWith("\u00d7") || $('#display1').val().endsWith("\u00f7")) {
+            // replace last character with *
+            $('#display1').val($('#display1').val().replace(/.$/,"\u00d7"));
+        }
+        else {
+            display1.operation = display1.operation + display1.operator + display1.operand;
+            display1.evaluation = eval(display1.operation).toString();
+            $('#display1').val($('#display1').val() + "\u00d7");
+            display1.numOfOperands ++;
+        }
+        display1.previousOperand = display1.operand;
+        display1.operand = "";
+        display1.operator = "*";
+        flag.decimalPointAllowed = true;
     }
-    else {
-        $('#display1').val($('#display1').val() + "\u00d7");
-        display1.op = display1.op + "*";
-    }
-    display1.lastOp = "*";
-    display1.lastOpIndex = display1.op.length - 1;
-    flag.decimalPointAllowed = true;
 })
 
 $('#divide').on('click', function () {
-    if(display1.op.endsWith("+") || display1.op.endsWith("-") || display1.op.endsWith("*") || display1.op.endsWith("/")) {
-        // replace last character with /
-        $('#display1').val($('#display1').val().replace(/.$/,"\u00f7"));
-        display1.op = display1.op.replace(/.$/,"/"); 
+    if ($('#display1').val().length !== 0) {
+        if($('#display1').val().endsWith("\u002b") || $('#display1').val().endsWith("\u2212") || $('#display1').val().endsWith("\u00d7") || $('#display1').val().endsWith("\u00f7")) {
+            // replace last character with /
+            $('#display1').val($('#display1').val().replace(/.$/,"\u00f7"));
+        }
+        else {
+            display1.operation = display1.operation + display1.operator + display1.operand;
+            display1.evaluation = eval(display1.operation).toString();
+            $('#display1').val($('#display1').val() + "\u00f7");
+            display1.numOfOperands ++;
+        }
+        display1.previousOperand = display1.operand;
+        display1.operand = "";
+        display1.operator = "/";
+        flag.decimalPointAllowed = true;
     }
-    else {
-        $('#display1').val($('#display1').val() + "\u00f7");
-        display1.op = display1.op + "/";
-    }
-    display1.lastOp = "/";
-    display1.lastOpIndex = display1.op.length - 1;
-    flag.decimalPointAllowed = true;
 })
 
 $('#percentage').on('click', function () {
-    /*
-    if (flag.numberAllowed === false) {
-        
-        var operator, operation, evaluation, result;
-        
-        // if display1.op = "" then result = display2.op/100
-        if (display1.op.length === false) {
-            // typeof(result) = number
-            result = Number(display2.op) / 100;
+
+    // Only one % is allowed for the entire operation.
+    // The last % indicates the end of the entire operation and triggers the equal button.
+    if (display1.numOfPct < 1 && flag.pctAllowed) {
+        if ($('#display1').val().length === 1) {
+            display1.operand = eval(display1.operand + "/" + "100").toString();
+            $('#display1').val(display1.operand);
+            $('#display2').val(display1.operand);
         }
         else {
-            // Strip the last operator from display1
-            // if display1.op = "2_+_3_-_" then operator = "_-_" operation = "2_+_3"
-            operator = display1.op.substr(display1.op.length - 3, 3);
-            operation = display1.op.substr(0, display1.op.length - 3);
-            // typeof(evaluation) = number
-            evaluation = eval(operation);
-            // typeof(result) = number
-            result = evaluation * Number(display2.op) / 100;
+            $('#display1').val($('#display1').val() + '\u0025');
+            display1.numOfPct ++;
+            flag.percentageAllowed = false;
+            switch (display1.operator) {
+                // a*b%
+                case "*":
+                    // a*b/100
+                    display1.operand = eval(display1.evaluation + "*" + display1.operand + "/" + "100").toString();
+                    display1.operation = "1";
+                    // result = 1 * (a*b/100)
+                    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+                    if (display1.numOfOperands)
+                    break;
+
+                // a/b%
+                case "/":
+                    // a/b*100
+                    display1.operand = eval(display1.evaluation + "/" + display1.operand + "*" + "100").toString();
+                    display1.operation = "1";
+                    display1.operator = "*";
+                    // result = 1 * (a/b*100)
+                    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+                    break;
+
+                // a+b%, a-b%
+                default:
+                    // a*b/100
+                    display1.operand = eval(display1.evaluation + "*" + display1.operand + "/" + "100").toString();
+                    // result = a + (a*b/100), result = a - (a*b/100)
+                    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+                    break;
+            }
+            // Execute the handler attached to the $("#equal") element for the 'click' event type.
+            $("#equal").trigger("click");
         }
-        
-        // Update display1 value
-        $('#display1').val($('#display1').val() + result.toString());
-        display1.op = display1.op + result.toString();
-        
-        // Update flags
-        flag.numberAllowed = false;
-        flag.display2Overwrite = true;
-        flag.lastOpIsPct = true;
     }
-    */
-    
-    // display1.op = 2 + 4 - 50
-    display1.op = "(" + display1.op + ")" + "*" + "";
-    $('#display1').val($('#display1').val() + '\u0025');
-    display1.op = display1.op + "%";
 })
 
 // Clear button 
 $('#clear').on('click', function () {
     $('#display1').val("");
-    display1.op = "";
-    display1.eval = "";
-    display1.lastOp = "";
-    display1.lastOpIndex = -1;
+    $('#display2').val("");
+    display1.operation = "";
+    display1.evaluation = "";
+    display1.operator = "";
+    display1.operand = "";
+    flag.decimalPointAllowed = true;
 })
 
 // Equal button
 $('#equal').on('click', function () {
-    display1.eval = eval(display1.op).toString();
-    display1.op = display1.eval;
-    $('#display1').val(display1.eval);
+    var result = $('#display2').val();
+    $('#display2').val("");
+    $('#display1').val(result);
+    display1.operand = result;
+    display1.operation = "";
+    display1.evaluation = "";
+    display1.operator = "";
+    
+    // If the result is an integer
+    if (Number(result) % 1 === 0) {
+        flag.decimalPointAllowed = true;
+    }
+    // If the result is decimal
+    else {
+        flag.decimalPointAllowed = false;
+    }
 })
 
 // Backspace button
 $('#backspace').on('click', function () {
     
-    var len = $('#display1').val().length;
-    var lastChar = $('#display1').val().charAt(len-1);
-    
-    // Update display1
-    var str1 = $('#display1').val().slice(0, len-1);
+    // Update ('#display1')
+    var str1 = $('#display1').val().slice(0, $('#display1').val().length-1);
     $('#display1').val(str1);
     
-    var str2 = display1.op.slice(0, len-1);
-    display1.op = str2;
+    // Update display1
+    var str2 = display1.operation.slice(0, $('#display1').val().length-1);
+    display1.operation = str2;
+    
+    // Update current operand
+    display1.operand = display1.operand.slice(0, display1.operand.length-1);
+    
+    // Update ('#display2')
+    if (display1.operand === "") {
+        //alert("1");
+        $('#display2').val(eval(display1.operation.slice(0, display1.operation.length-1)));
+    }
+    else {
+        //alert("2");
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+    }
 })
 
 // The change event is sent to an element when its value changes
@@ -235,8 +328,8 @@ $("input[type='checkbox']").change(function () {
         $("#equal").addClass("equal-dark");
         $("#clear").removeClass("clear-light");
         $("#clear").addClass("clear-dark");
-        $("#clear-entry").removeClass("clear-entry-light");
-        $("#clear-entry").addClass("clear-entry-dark");
+        $("#ans").removeClass("ans-light");
+        $("#ans").addClass("ans-dark");
         $("#backspace").removeClass("backspace-light");
         $("#backspace").addClass("backspace-dark");
     }
@@ -257,8 +350,8 @@ $("input[type='checkbox']").change(function () {
         $("#equal").addClass("equal-light");
         $("#clear").removeClass("clear-dark");
         $("#clear").addClass("clear-light");
-        $("#clear-entry").removeClass("clear-entry-dark");
-        $("#clear-entry").addClass("clear-entry-light");
+        $("#ans").removeClass("ans-dark");
+        $("#ans").addClass("ans-light");
         $("#backspace").removeClass("backspace-dark");
         $("#backspace").addClass("backspace-light");
     }
