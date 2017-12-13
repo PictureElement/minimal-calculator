@@ -209,7 +209,8 @@ $('#percentage').on('click', function () {
     // Only one % is allowed for the entire operation.
     // The last % indicates the end of the entire operation and triggers the equal button.
     if (display1.numOfPct < 1 && flag.pctAllowed) {
-        if ($('#display1').val().length === 1) {
+        //Num
+        if (display1.numOfOperands === 0) {
             display1.operand = eval(display1.operand + "/" + "100").toString();
             $('#display1').val(display1.operand);
             $('#display2').val(display1.operand);
