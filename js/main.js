@@ -154,12 +154,6 @@ $('#add').on('click', function () {
         // replace last character with +
         $('#display1').val($('#display1').val().replace(/.$/,"\u002b"));
     }
-    /*
-    // Handle %
-    else if ($('#display1').val().endsWith("\u0025")) {
-        
-    }
-    */
     else {
         display1.operation = display1.operation + display1.operator + display1.operand;
         display1.evaluation = eval(display1.operation).toString();
