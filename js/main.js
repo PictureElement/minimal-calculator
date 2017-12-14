@@ -164,49 +164,46 @@ $('#decimal').on('click', function () {
 })
 
 $('#left-parenthesis').on('click', function () {
-    display1.operation = display1.operation + ".";
-    display1.evaluation = math.eval(display1.operation);
+    display1.operation = display1.operation + "(";
     $('#display1').val($('#display1').val() + '\u0028');
-    $('#display2').val(display1.evaluation.toString());
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
-$('#left-parenthesis').on('click', function () {
-    display1.operation = display1.operation + ".";
-    display1.evaluation = math.eval(display1.operation);
+$('#right-parenthesis').on('click', function () {
+    display1.operation = display1.operation + ")";
     $('#display1').val($('#display1').val() + '\u0029');
-    $('#display2').val(display1.evaluation.toString());
-})
-
-$('#square-root').on('click', function () {
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
 // operators
 $('#add').on('click', function () {
     display1.operation = display1.operation + "+";
-    display1.evaluation = math.eval(display1.operation);
     $('#display1').val($('#display1').val() + '\u002b');
-    $('#display2').val(display1.evaluation.toString());
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
 $('#subtract').on('click', function () {
     display1.operation = display1.operation + "-";
-    display1.evaluation = math.eval(display1.operation);
     $('#display1').val($('#display1').val() + '\u2212');
-    $('#display2').val(display1.evaluation.toString());
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
 $('#multiply').on('click', function () {
     display1.operation = display1.operation + "*";
-    display1.evaluation = math.eval(display1.operation);
     $('#display1').val($('#display1').val() + '\u00d7');
-    $('#display2').val(display1.evaluation.toString());
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
 $('#divide').on('click', function () {
     display1.operation = display1.operation + "/";
-    display1.evaluation = math.eval(display1.operation);
     $('#display1').val($('#display1').val() + '\u00f7');
-    $('#display2').val(display1.evaluation.toString());
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
 $('#percentage').on('click', function () {
