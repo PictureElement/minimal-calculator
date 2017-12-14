@@ -16,8 +16,7 @@ body {
 button {
     width: 65px;
     height: 45px;
-    font-family: 'Inconsolata', monospace;
-    font-size: 30px !important;
+    font-family: 'Roboto', sans-serif;
     border: none;
     border-radius: 5px;
     outline: none !important;
@@ -25,17 +24,18 @@ button {
     transition: all 0.1s;
 }
 
-#display1 {
-    font-family: 'Inconsolata', monospace;
-    font-weight: 300 !important;
-    font-size: 20px !important;
-    height: 50px;
+button.operator-group, button#equal {
+    font-size: 30px !important;
 }
 
-#display2 {
-    font-family: 'Inconsolata', monospace;
-    font-weight: 500 !important;
-    font-size: 35px !important;
+button.operand-group, button#clear, button#ans {
+    font-size: 20px !important;
+}
+
+#display1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400 !important;
+    font-size: 20px !important;
     height: 50px;
 }
 
@@ -134,7 +134,7 @@ form input {
     top: 3px;
 }
 
-.clear-entry-light, .backspace-light {
+.ans-light, .backspace-light {
     background-color: #ff9800;
     border-color: #ff9800;
     color: #ffffff;
@@ -142,13 +142,13 @@ form input {
     color: #ffffff;
 }
 
-.clear-entry-light:hover, .backspace-light:hover {
+.ans-light:hover, .backspace-light:hover {
     background-color: #fb8c00;
     border-color: #f57c00;
     box-shadow: 0px 5px 0px #b36200;
 }
 
-.clear-entry-light:active, .backspace-light:active {
+.ans-light:active, .backspace-light:active {
     background-color: #f57c00;
     border-color: #f57c00;
     box-shadow: 0px 2px 0px #b35900;
@@ -252,7 +252,7 @@ form input {
     top: 3px;
 }
 
-.clear-entry-dark, .backspace-dark {
+.ans-dark, .backspace-dark {
     background-color: #ff9800;
     border-color: #ff9800;
     color: #ffffff;
@@ -260,13 +260,13 @@ form input {
     color: #000000;
 }
 
-.clear-entry-dark:hover, .backspace-dark:hover {
+.ans-dark:hover, .backspace-dark:hover {
     background-color: #fb8c00;
     border-color: #f57c00;
     box-shadow: 0px 5px 0px #b36200;
 }
 
-.clear-entry-dark:active, .backspace-dark:active {
+.ans-dark:active, .backspace-dark:active {
     background-color: #f57c00;
     border-color: #f57c00;
     box-shadow: 0px 2px 0px #b35900;
