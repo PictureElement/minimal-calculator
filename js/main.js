@@ -6,13 +6,16 @@ var display1 = {
     operator: "",
     operand: "",
     previousOperand: "",
-    numOfPct: 0
+    numOfPct: 0,
+    answer: ""
 };
 
 // default flag values
 var flag = {
     decimalPointAllowed: true,
     pctAllowed: false,
+    ansAllowed: false,
+    digitAllowed: true
 };
 
 // default display values
@@ -32,73 +35,93 @@ $("#backspace").addClass("backspace-light");
 
 // numbers
 $('#zero').on('click', function () {
-    display1.operand = display1.operand + "0";
-    $('#display1').val($('#display1').val() + '\u0030');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "0";
+        $('#display1').val($('#display1').val() + '\u0030');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#one').on('click', function () {
-    display1.operand = display1.operand + "1";
-    $('#display1').val($('#display1').val() + '\u0031');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "1";
+        $('#display1').val($('#display1').val() + '\u0031');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#two').on('click', function () {
-    display1.operand = display1.operand + "2";
-    $('#display1').val($('#display1').val() + '\u0032');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "2";
+        $('#display1').val($('#display1').val() + '\u0032');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#three').on('click', function () {
-    display1.operand = display1.operand + "3";
-    $('#display1').val($('#display1').val() + '\u0033');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "3";
+        $('#display1').val($('#display1').val() + '\u0033');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#four').on('click', function () {
-    display1.operand = display1.operand + "4";
-    $('#display1').val($('#display1').val() + '\u0034');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "4";
+        $('#display1').val($('#display1').val() + '\u0034');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#five').on('click', function () {
-    display1.operand = display1.operand + "5";
-    $('#display1').val($('#display1').val() + '\u0035');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "5";
+        $('#display1').val($('#display1').val() + '\u0035');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#six').on('click', function () {
-    display1.operand = display1.operand + "6";
-    $('#display1').val($('#display1').val() + '\u0036');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "6";
+        $('#display1').val($('#display1').val() + '\u0036');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#seven').on('click', function () {
-    display1.operand = display1.operand + "7";
-    $('#display1').val($('#display1').val() + '\u0037');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "7";
+        $('#display1').val($('#display1').val() + '\u0037');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#eight').on('click', function () {
-    display1.operand = display1.operand + "8";
-    $('#display1').val($('#display1').val() + '\u0038');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "8";
+        $('#display1').val($('#display1').val() + '\u0038');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
 
 $('#nine').on('click', function () {
-    display1.operand = display1.operand + "9";
-    $('#display1').val($('#display1').val() + '\u0039');
-    $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    flag.pctAllowed = true;
+    if (flag.digitAllowed) {
+        display1.operand = display1.operand + "9";
+        $('#display1').val($('#display1').val() + '\u0039');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
 })
               
 $('#decimal').on('click', function () {
@@ -147,6 +170,7 @@ $('#add').on('click', function () {
     display1.operand = "";
     display1.operator = "+";
     flag.decimalPointAllowed = true;
+    flag.digitAllowed = true;
 })
 
 $('#subtract').on('click', function () {
@@ -164,6 +188,7 @@ $('#subtract').on('click', function () {
     display1.operand = "";
     display1.operator = "-";
     flag.decimalPointAllowed = true;
+    flag.digitAllowed = true;
 })
 
 $('#multiply').on('click', function () {
@@ -182,6 +207,7 @@ $('#multiply').on('click', function () {
         display1.operand = "";
         display1.operator = "*";
         flag.decimalPointAllowed = true;
+        flag.digitAllowed = true;
     }
 })
 
@@ -201,6 +227,7 @@ $('#divide').on('click', function () {
         display1.operand = "";
         display1.operator = "/";
         flag.decimalPointAllowed = true;
+        flag.digitAllowed = true;
     }
 })
 
@@ -270,6 +297,7 @@ $('#equal').on('click', function () {
     var result = $('#display2').val();
     $('#display2').val("");
     $('#display1').val(result);
+    display1.answer = result;
     display1.operand = result;
     display1.operation = "";
     display1.evaluation = "";
@@ -282,6 +310,26 @@ $('#equal').on('click', function () {
     // If the result is decimal
     else {
         flag.decimalPointAllowed = false;
+    }
+    
+    // Update ans flag
+    flag.ansAllowed = true;
+})
+
+/*
+if (flag.digitAllowed) {
+        display1.operand = display1.operand + "5";
+        $('#display1').val($('#display1').val() + '\u0035');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.pctAllowed = true;
+    }
+    */
+$('#ans').on('click', function () {
+    if (flag.ansAllowed) {
+        display1.operand = display1.answer;
+        $('#display1').val($('#display1').val() + '\u0041' + '\u006E' + '\u0073' + '\u0028' + display1.answer + '\u0029');
+        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
+        flag.digitAllowed = false;
     }
 })
 
