@@ -13,18 +13,19 @@ var display1 = {
     answer: ""
     */
     operation: "",
-    evaluation: ""
+    evaluation: "",
+    answer: ""
 };
 
 // default flag values
 var flag = {
+    ansAllowed: false // Initially do not allow the use of Ans button
     /*
     decimalPointAllowed: true,
     pctAllowed: false,
     ansAllowed: false,
     digitAllowed: true
     */
-    
 };
 
 // default display values
@@ -207,7 +208,7 @@ $('#divide').on('click', function () {
 })
 
 $('#percentage').on('click', function () {
-
+    /*
     // Only one % is allowed for the entire operation.
     // The last % indicates the end of the entire operation and triggers the equal button.
     if (display1.numOfPct < 1 && flag.pctAllowed) {
@@ -253,6 +254,7 @@ $('#percentage').on('click', function () {
             $("#equal").trigger("click");
         }
     }
+    */
 })
 
 // Clear button 
@@ -274,6 +276,7 @@ $('#clear').on('click', function () {
 
 // Equal button
 $('#equal').on('click', function () {
+    /*
     var result = $('#display2').val();
     $('#display2').val("");
     $('#display1').val(result);
@@ -299,6 +302,12 @@ $('#equal').on('click', function () {
     flag.pctAllowed = true;
     flag.ansAllowed = true;
     flag.digitAllowed = true;
+    */
+    display1.answer = display1.evaluation; // Store the answer (Ans button)
+    $('#display1').val(display1.answer); // Update display1
+    $('#display2').val(""); // Update display2
+    display1.operation = display1.answer; // Current operation equals the answer
+    flag.ansAllowed = true; // Allow the use of Ans button
 })
 
 $('#ans').on('click', function () {
