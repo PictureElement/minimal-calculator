@@ -1,14 +1,4 @@
 var display1 = {
-    /*
-    operation: "",
-    evaluation: "",
-    numOfOperands: 0,
-    operator: "",
-    operand: "",
-    previousOperand: "",
-    numOfPct: 0,
-    answer: ""
-    */
     operation: "",
     evaluation: "",
     answer: ""
@@ -29,7 +19,7 @@ var flag = {
 $('#display1').val("");
 $('#display2').val("");
 
-// default theme (light)
+// Set default theme (light)
 $(".container").addClass("container-light");
 $("form").addClass("form-light");
 $("form input").addClass("form-input-light");
@@ -254,19 +244,10 @@ $('#percentage').on('click', function () {
 
 // Clear
 $('#clear').on('click', function () {
+    display1.operation = "",
+    display1.evaluation = "",
     $('#display1').val("");
     $('#display2').val("");
-    display1.operation = "";
-    display1.evaluation = "";
-    display1.numOfOperands = 0;
-    display1.operator = "";
-    display1.operand = "";
-    display1.previousOperand = "";
-    display1.numOfPct = 0;
-    
-    flag.decimalPointAllowed = true;
-    flag.pctAllowed = false;
-    flag.digitAllowed = true;
 })
 
 // Equal
