@@ -320,28 +320,11 @@ $('#ans').on('click', function () {
 })
 
 // Backspace button
-$('#backspace').on('click', function () {
-    
-    // Update ('#display1')
-    var str1 = $('#display1').val().slice(0, $('#display1').val().length-1);
-    $('#display1').val(str1);
-    
-    // Update display1
-    var str2 = display1.operation.slice(0, $('#display1').val().length-1);
-    display1.operation = str2;
-    
-    // Update current operand
-    display1.operand = display1.operand.slice(0, display1.operand.length-1);
-    
-    // Update ('#display2')
-    if (display1.operand === "") {
-        //alert("1");
-        $('#display2').val(eval(display1.operation.slice(0, display1.operation.length-1)));
-    }
-    else {
-        //alert("2");
-        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-    }
+$('#backspace').on('click', function () {    
+    display1.operation = display1.operation.slice(0, display1.operation.length-1);
+    $('#display1').val($('#display1').val().slice(0, $('#display1').val().length-1));
+    evaluate();
+    $('#display2').val(display1.evaluation);
 })
 
 // The change event is sent to an element when its value changes
