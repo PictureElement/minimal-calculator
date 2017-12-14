@@ -245,7 +245,6 @@ $('#percentage').on('click', function () {
         else {
             $('#display1').val($('#display1').val() + '\u0025');
             display1.numOfPct ++;
-            flag.percentageAllowed = false;
             switch (display1.operator) {
                 // a*b%
                 case "*":
@@ -287,9 +286,15 @@ $('#clear').on('click', function () {
     $('#display2').val("");
     display1.operation = "";
     display1.evaluation = "";
+    display1.numOfOperands = 0;
     display1.operator = "";
     display1.operand = "";
+    display1.previousOperand = "";
+    display1.numOfPct = 0;
+    
     flag.decimalPointAllowed = true;
+    flag.pctAllowed = false;
+    flag.digitAllowed = true;
 })
 
 // Equal button
@@ -297,11 +302,14 @@ $('#equal').on('click', function () {
     var result = $('#display2').val();
     $('#display2').val("");
     $('#display1').val(result);
-    display1.answer = result;
-    display1.operand = result;
     display1.operation = "";
     display1.evaluation = "";
+    display1.numOfOperands = 0;
     display1.operator = "";
+    display1.operand = result;
+    display1.previousOperand = "";
+    display1.numOfPct = 0;
+    display1.answer = result;
     
     // If the result is an integer
     if (Number(result) % 1 === 0) {
@@ -313,17 +321,11 @@ $('#equal').on('click', function () {
     }
     
     // Update ans flag
+    flag.pctAllowed = true;
     flag.ansAllowed = true;
+    flag.digitAllowed = true;
 })
 
-/*
-if (flag.digitAllowed) {
-        display1.operand = display1.operand + "5";
-        $('#display1').val($('#display1').val() + '\u0035');
-        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-        flag.pctAllowed = true;
-    }
-    */
 $('#ans').on('click', function () {
     if (flag.ansAllowed) {
         display1.operand = display1.answer;
