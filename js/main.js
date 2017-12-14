@@ -1,6 +1,3 @@
-//math.eval('sqrt(-4)')); 
-
-
 var display1 = {
     /*
     operation: "",
@@ -43,7 +40,6 @@ $("#clear").addClass("clear-light");
 $("#ans").addClass("ans-light");
 $("#backspace").addClass("backspace-light");
 
-// numbers
 /*
 try {
     myroutine(); // may throw three types of exceptions
@@ -59,8 +55,6 @@ try {
        logMyErrors(e); // pass exception object to error handler
     }
 }
-*/
-/*
 function isValidJSON(text) {
     try {
         JSON.parse(text);
@@ -87,6 +81,7 @@ function evaluate() {
     }
 }
 
+// Digits
 $('#zero').on('click', function () {
     display1.operation = display1.operation + "0";
     $('#display1').val($('#display1').val() + '\u0030');
@@ -164,6 +159,7 @@ $('#decimal').on('click', function () {
     $('#display2').val(display1.evaluation);
 })
 
+// Operators
 $('#left-parenthesis').on('click', function () {
     display1.operation = display1.operation + "(";
     $('#display1').val($('#display1').val() + '\u0028');
@@ -178,7 +174,6 @@ $('#right-parenthesis').on('click', function () {
     $('#display2').val(display1.evaluation);
 })
 
-// operators
 $('#add').on('click', function () {
     display1.operation = display1.operation + "+";
     $('#display1').val($('#display1').val() + '\u002b');
@@ -257,7 +252,7 @@ $('#percentage').on('click', function () {
     */
 })
 
-// Clear button 
+// Clear
 $('#clear').on('click', function () {
     $('#display1').val("");
     $('#display2').val("");
@@ -274,35 +269,8 @@ $('#clear').on('click', function () {
     flag.digitAllowed = true;
 })
 
-// Equal button
+// Equal
 $('#equal').on('click', function () {
-    /*
-    var result = $('#display2').val();
-    $('#display2').val("");
-    $('#display1').val(result);
-    display1.operation = "";
-    display1.evaluation = "";
-    display1.numOfOperands = 0;
-    display1.operator = "";
-    display1.operand = result;
-    display1.previousOperand = "";
-    display1.numOfPct = 0;
-    display1.answer = result;
-    
-    // If the result is an integer
-    if (Number(result) % 1 === 0) {
-        flag.decimalPointAllowed = true;
-    }
-    // If the result is decimal
-    else {
-        flag.decimalPointAllowed = false;
-    }
-    
-    // Update ans flag
-    flag.pctAllowed = true;
-    flag.ansAllowed = true;
-    flag.digitAllowed = true;
-    */
     display1.answer = display1.evaluation; // Store the answer (Ans button)
     $('#display1').val(display1.answer); // Update display1
     $('#display2').val(""); // Update display2
@@ -320,7 +288,7 @@ $('#ans').on('click', function () {
     }
 })
 
-// Backspace button
+// Backspace
 $('#backspace').on('click', function () {    
     display1.operation = display1.operation.slice(0, display1.operation.length-1);
     $('#display1').val($('#display1').val().slice(0, $('#display1').val().length-1));
@@ -328,7 +296,7 @@ $('#backspace').on('click', function () {
     $('#display2').val(display1.evaluation);
 })
 
-// The change event is sent to an element when its value changes
+// Theme system
 $("input[type='checkbox']").change(function () {
     // dark theme
     if (this.checked) {
