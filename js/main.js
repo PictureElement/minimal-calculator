@@ -310,12 +310,13 @@ $('#equal').on('click', function () {
     flag.ansAllowed = true; // Allow the use of Ans button
 })
 
-$('#ans').on('click', function () {
-    if (flag.ansAllowed) {
-        display1.operand = display1.answer;
-        $('#display1').val($('#display1').val() + '\u0041' + '\u006E' + '\u0073' + '\u0028' + display1.answer + '\u0029');
-        $('#display2').val(eval(display1.operation + display1.operator + display1.operand).toString());
-        flag.digitAllowed = false;
+$('#ans').on('click', function () {    
+    // Allow 'Ans' to be used when its flag is enabled AND only after a [+,-,*,/] character OR an empty operation
+    if (flag.ansAllowed && (display1.operation.endsWith('+') || display1.operation.endsWith('-') || display1.operation.endsWith('*') || display1.operation.endsWith('/') || display1.operation === "")) {
+        display1.operation = display1.operation + display1.answer;
+        $('#display1').val($('#display1').val() + 'Ans');
+        evaluate();
+        $('#display2').val(display1.evaluation);
     }
 })
 
