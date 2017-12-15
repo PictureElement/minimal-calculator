@@ -1,12 +1,14 @@
 var display1 = {
     operation: "",
     evaluation: "",
-    answer: ""
+    answer: "",
+    unbalancedParentheses: 0 // Number of unbalanced parentheses
 };
 
 // default flag values
 var flag = {
-    ansAllowed: false // Initially do not allow the use of Ans button
+    ansAllowed: false, // Initially do not allow the use of Ans button
+    squareRoot: false, // Square root evaluation
     /*
     decimalPointAllowed: true,
     pctAllowed: false,
@@ -73,77 +75,132 @@ function evaluate() {
 
 // Digits
 $('#zero').on('click', function () {
-    display1.operation = display1.operation + "0";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "0" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "0";
+    }
     $('#display1').val($('#display1').val() + '\u0030');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#one').on('click', function () {
-    display1.operation = display1.operation + "1";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "1" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "1";
+    }
     $('#display1').val($('#display1').val() + '\u0031');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#two').on('click', function () {
-    display1.operation = display1.operation + "2";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "2" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "2";
+    }
     $('#display1').val($('#display1').val() + '\u0032');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#three').on('click', function () {
-    display1.operation = display1.operation + "3";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "3" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "3";
+    }
     $('#display1').val($('#display1').val() + '\u0033');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#four').on('click', function () {
-    display1.operation = display1.operation + "4";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "4" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "4";
+    }
     $('#display1').val($('#display1').val() + '\u0034');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#five').on('click', function () {
-    display1.operation = display1.operation + "5";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "5" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "5";
+    }
     $('#display1').val($('#display1').val() + '\u0035');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#six').on('click', function () {
-    display1.operation = display1.operation + "6";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "6" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "6";
+    }
     $('#display1').val($('#display1').val() + '\u0036');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#seven').on('click', function () {
-    display1.operation = display1.operation + "7";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "7" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "7";
+    }
     $('#display1').val($('#display1').val() + '\u0037');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#eight').on('click', function () {
-    display1.operation = display1.operation + "8";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "8" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "8";
+    }
     $('#display1').val($('#display1').val() + '\u0038');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#nine').on('click', function () {
-    display1.operation = display1.operation + "9";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "9" + ")";
+    }
+    else {
+        display1.operation = display1.operation + "9";
+    }
     $('#display1').val($('#display1').val() + '\u0039');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
               
 $('#decimal').on('click', function () {
-    display1.operation = display1.operation + ".";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "." + ")";
+    }
+    else {
+        display1.operation = display1.operation + ".";
+    }
     $('#display1').val($('#display1').val() + '\u002e');
     evaluate();
     $('#display2').val(display1.evaluation);
@@ -151,20 +208,38 @@ $('#decimal').on('click', function () {
 
 // Operators
 $('#left-parenthesis').on('click', function () {
-    display1.operation = display1.operation + "(";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + "(" + ")";
+        display1.unbalancedParentheses ++;
+    }
+    else {
+        display1.operation = display1.operation + "(";
+    }
     $('#display1').val($('#display1').val() + '\u0028');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#right-parenthesis').on('click', function () {
-    display1.operation = display1.operation + ")";
+    if (flag.squareRoot) {
+        display1.operation = display1.operation.substring(0, display1.operation.length-1) + ")" + ")";
+        display1.unbalancedParentheses --;
+        if (flag.unbalancedParentheses <= 0) {
+            display1.squareRoot = false;
+        }
+    }
+    else {
+        display1.operation = display1.operation + ")";
+    }
     $('#display1').val($('#display1').val() + '\u0029');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
 
 $('#add').on('click', function () {
+    if (flag.squareRoot) {
+        flag.squareRoot = false;
+    }
     display1.operation = display1.operation + "+";
     $('#display1').val($('#display1').val() + '\u002b');
     evaluate();
@@ -172,6 +247,9 @@ $('#add').on('click', function () {
 })
 
 $('#subtract').on('click', function () {
+    if (flag.squareRoot) {
+        flag.squareRoot = false;
+    }
     display1.operation = display1.operation + "-";
     $('#display1').val($('#display1').val() + '\u2212');
     evaluate();
@@ -179,6 +257,9 @@ $('#subtract').on('click', function () {
 })
 
 $('#multiply').on('click', function () {
+    if (flag.squareRoot) {
+        flag.squareRoot = false;
+    }
     display1.operation = display1.operation + "*";
     $('#display1').val($('#display1').val() + '\u00d7');
     evaluate();
@@ -186,8 +267,19 @@ $('#multiply').on('click', function () {
 })
 
 $('#divide').on('click', function () {
+    if (flag.squareRoot) {
+        flag.squareRoot = false;
+    }
     display1.operation = display1.operation + "/";
     $('#display1').val($('#display1').val() + '\u00f7');
+    evaluate();
+    $('#display2').val(display1.evaluation);
+})
+
+$('#square-root').on('click', function () {
+    flag.squareRoot = true; // Raise the flag
+    display1.operation = display1.operation + "sqrt()";
+    $('#display1').val($('#display1').val() + '\u221a');
     evaluate();
     $('#display2').val(display1.evaluation);
 })
@@ -255,6 +347,8 @@ $('#clear').on('click', function () {
     display1.evaluation = "",
     $('#display1').val("");
     $('#display2').val("");
+    display1.unbalancedParentheses = 0;
+    flag.squareRoot = false;
 })
 
 // Equal
@@ -263,7 +357,9 @@ $('#equal').on('click', function () {
     $('#display1').val(display1.answer); // Update display1
     $('#display2').val(""); // Update display2
     display1.operation = display1.answer; // Current operation equals the answer
+    display1.unbalancedParentheses = 0;
     flag.ansAllowed = true; // Allow the use of Ans button
+    flag.squareRoot = false;
 })
 
 $('#ans').on('click', function () {    
