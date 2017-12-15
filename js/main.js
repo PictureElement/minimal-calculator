@@ -29,7 +29,6 @@ $(".operand-group").addClass("operand-group-light");
 $(".operator-group").addClass("operator-group-light");
 $("#equal").addClass("equal-light");
 $("#clear").addClass("clear-light");
-$("#ans").addClass("ans-light");
 $("#backspace").addClass("backspace-light");
 
 /*
@@ -399,8 +398,6 @@ $("input[type='checkbox']").change(function () {
         $("#equal").addClass("equal-dark");
         $("#clear").removeClass("clear-light");
         $("#clear").addClass("clear-dark");
-        $("#ans").removeClass("ans-light");
-        $("#ans").addClass("ans-dark");
         $("#backspace").removeClass("backspace-light");
         $("#backspace").addClass("backspace-dark");
     }
@@ -421,8 +418,6 @@ $("input[type='checkbox']").change(function () {
         $("#equal").addClass("equal-light");
         $("#clear").removeClass("clear-dark");
         $("#clear").addClass("clear-light");
-        $("#ans").removeClass("ans-dark");
-        $("#ans").addClass("ans-light");
         $("#backspace").removeClass("backspace-dark");
         $("#backspace").addClass("backspace-light");
     }
