@@ -1,8 +1,10 @@
+// Standard Priority Calculator
+
 var display1 = {
     operation: "",
     evaluation: "",
     answer: "",
-    unbalancedParentheses: 0 // Number of unbalanced parentheses
+    unbalancedParentheses: 0, // Number of unbalanced parentheses
 };
 
 // default flag values
@@ -284,7 +286,7 @@ $('#square-root').on('click', function () {
 })
 
 $('#square').on('click', function () {
-    display1.operation = display1.operation + "^2";
+    display1.operation = display1.operation + "^(2)";
     $('#display1').val($('#display1').val() + '\u00b2');
     evaluate();
     $('#display2').val(display1.evaluation);
@@ -362,9 +364,15 @@ $('#equal').on('click', function () {
 })
 
 $('#ans').on('click', function () {    
-    // Allow 'Ans' to be used when its flag is enabled AND only after a [+,-,*,/] character OR an empty operation
-    if (flag.ansAllowed && (display1.operation.endsWith('+') || display1.operation.endsWith('-') || display1.operation.endsWith('*') || display1.operation.endsWith('/') || display1.operation === "")) {
-        display1.operation = display1.operation + display1.answer;
+    
+    // Allow 'Ans' when its flag is enabled
+    if (flag.ansAllowed) {
+        if (flag.squareRoot) {
+            display1.operation = display1.operation.substring(0, display1.operation.length-1) + display1.answer + ")";
+        }
+        else {
+            display1.operation = display1.operation + display1.answer;
+        }
         $('#display1').val($('#display1').val() + 'Ans');
         evaluate();
         $('#display2').val(display1.evaluation);
