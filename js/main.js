@@ -192,6 +192,13 @@ $('#divide').on('click', function () {
     $('#display2').val(display1.evaluation);
 })
 
+$('#square').on('click', function () {
+    display1.operation = display1.operation + "^2";
+    $('#display1').val($('#display1').val() + '\u00b2');
+    evaluate();
+    $('#display2').val(display1.evaluation);
+})
+
 $('#percentage').on('click', function () {
     /*
     // Only one % is allowed for the entire operation.
