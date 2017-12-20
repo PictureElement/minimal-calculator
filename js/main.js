@@ -242,7 +242,7 @@ $('#square-root').on('click', function () {
                display1.operation.endsWith('4') || display1.operation.endsWith('5') ||
                display1.operation.endsWith('6') || display1.operation.endsWith('7') || 
                display1.operation.endsWith('8') || display1.operation.endsWith('9') ||
-                display1.operation.endsWith('.'))
+               display1.operation.endsWith('.'))
     {
         index = display1.operation.length - 1;
         for (i = display1.operation.length - 2; i > -1; i--) 
@@ -252,7 +252,7 @@ $('#square-root').on('click', function () {
                 display1.operation.charAt(i) === '4' || display1.operation.charAt(i) === '5' ||
                 display1.operation.charAt(i) === '6' || display1.operation.charAt(i) === '7' ||
                 display1.operation.charAt(i) === '8' || display1.operation.charAt(i) === '9' ||
-                display1.operation.charAt(i) === '.')
+                display1.operation.charAt(i) === '.' || display1.operation.charAt(i) === '^')
             {
                 index = i;
             }
@@ -273,9 +273,18 @@ $('#square-root').on('click', function () {
     
     // Update operation with sqrt(radicand)
     display1.operation = display1.operation.substring(0, index) + "sqrt(" + radicand + ")";
+        
+    alert(radicand);
     
-    // Find the last occurence of the specified value (i.e. radicand)
+    // Replace '^2' with superscript two (don't forget to escape '^' with '\')
+    radicand = radicand.replace(/\^2/g, "\u00b2");
+    
+    alert(radicand);
+    
+    // Find the last occurence of radicand
     index = $('#display1').val().lastIndexOf(radicand);
+    
+    radicand = $('#display1').val().substring(index, $('#display1').val().length);
     
     // Update #display1
     $('#display1').val($('#display1').val().substring(0, index) + '\u221a' + radicand);
@@ -287,16 +296,8 @@ $('#square-root').on('click', function () {
     $('#display2').val(display1.evaluation);
 });
         
-    /*
-    flag.squareRoot = true; // Raise the flag
-    display1.operation = display1.operation + "sqrt()";
-    $('#display1').val($('#display1').val() + '\u221a');
-    evaluate();
-    $('#display2').val(display1.evaluation);
-    */
-
 $('#square').on('click', function () {
-    display1.operation = display1.operation + "^(2)";
+    display1.operation = display1.operation + "^2";
     $('#display1').val($('#display1').val() + '\u00b2');
     evaluate();
     $('#display2').val(display1.evaluation);
