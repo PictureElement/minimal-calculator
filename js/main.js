@@ -194,17 +194,106 @@ $('#divide').on('click', function () {
 })
 
 $('#square-root').on('click', function () {
-    if (squareRoot === false) {
-        flag.squareRoot = true; // Raise the flag
-        display1.operation = display1.operation + "sqrt()";
-        $('#display1').val($('#display1').val() + '\u221a');
-        evaluate();
-        $('#display2').val(display1.evaluation);
+    
+    var count = 0;
+    var index = -1;
+    var radicand = "";
+    var result = "";
+    
+    // radicand is a complex expression
+    if (display1.operation.endsWith(')')) 
+    {
+        // Find the position of matching parenthesis
+        // For example if operation="2+(3-(3+4))", then the index of the 
+        // matching '(' would be 2 and the radicand would be (3-(3+4))
+        for (i = display1.operation.length - 2; i > -1; i--) 
+        {
+            if (display1.operation.charAt(i) === '(') 
+            {
+                if (count === 0) 
+                {
+                    index = i;
+                    break;
+                } 
+                else 
+                {
+                    count -= 1;
+                    continue;
+                }
+            } 
+            else if (display1.operation.charAt(i) === ')') 
+            {
+                count += 1;
+            } 
+            else 
+            {
+                continue;
+            }
+        }
+        if (index === -1) 
+        {
+            alert("malformed expression 1");
+            return;
+        }
+    } 
+    // radicand is a single number
+    else if (display1.operation.endsWith('0') || display1.operation.endsWith('1') || 
+               display1.operation.endsWith('2') || display1.operation.endsWith('3') || 
+               display1.operation.endsWith('4') || display1.operation.endsWith('5') ||
+               display1.operation.endsWith('6') || display1.operation.endsWith('7') || 
+               display1.operation.endsWith('8') || display1.operation.endsWith('9') ||
+                display1.operation.endsWith('.'))
+    {
+        index = display1.operation.length - 1;
+        for (i = display1.operation.length - 2; i > -1; i--) 
+        {
+            if (display1.operation.charAt(i) === '0' || display1.operation.charAt(i) === '1' ||
+                display1.operation.charAt(i) === '2' || display1.operation.charAt(i) === '3' ||
+                display1.operation.charAt(i) === '4' || display1.operation.charAt(i) === '5' ||
+                display1.operation.charAt(i) === '6' || display1.operation.charAt(i) === '7' ||
+                display1.operation.charAt(i) === '8' || display1.operation.charAt(i) === '9' ||
+                display1.operation.charAt(i) === '.')
+            {
+                index = i;
+            }
+            else 
+            {
+                break;
+            }
+        }
     }
-    else {
+    else 
+    {
+        alert("malformed expression 2");
+        return;
+    }
+    
+    // Get the radicand
+    radicand = display1.operation.substring(index, display1.operation.length);
+    
+    // Update operation with sqrt(radicand)
+    display1.operation = display1.operation.substring(0, index) + "sqrt(" + radicand + ")";
+    
+    // Find the last occurence of the specified value (i.e. radicand)
+    index = $('#display1').val().lastIndexOf(radicand);
+    
+    // Update #display1
+    $('#display1').val($('#display1').val().substring(0, index) + '\u221a' + radicand);
+    
+    // Evaluate
+    evaluate();
+    
+    // Display current evaluation
+    $('#display2').val(display1.evaluation);
+});
         
-    }
-})
+    /*
+    flag.squareRoot = true; // Raise the flag
+    display1.operation = display1.operation + "sqrt()";
+    $('#display1').val($('#display1').val() + '\u221a');
+    evaluate();
+    $('#display2').val(display1.evaluation);
+    */
 
 $('#square').on('click', function () {
     display1.operation = display1.operation + "^(2)";
