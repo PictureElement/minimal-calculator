@@ -232,7 +232,8 @@ $('#square-root').on('click', function () {
         }
         if (index === -1) 
         {
-            alert("malformed expression 1");
+            //alert("Malformed expression");
+            $('#display2').val("Malformed expression");
             return;
         }
     } 
@@ -264,7 +265,6 @@ $('#square-root').on('click', function () {
     }
     else 
     {
-        alert("malformed expression 2");
         return;
     }
     
@@ -273,13 +273,9 @@ $('#square-root').on('click', function () {
     
     // Update operation with sqrt(radicand)
     display1.operation = display1.operation.substring(0, index) + "sqrt(" + radicand + ")";
-        
-    alert(radicand);
     
     // Replace '^2' with superscript two (don't forget to escape '^' with '\')
     radicand = radicand.replace(/\^2/g, "\u00b2");
-    
-    alert(radicand);
     
     // Find the last occurence of radicand
     index = $('#display1').val().lastIndexOf(radicand);
